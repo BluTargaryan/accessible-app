@@ -39,6 +39,11 @@ display: flex;
 flex-direction: column;
 `
 
+
+
+
+
+
 const Holder = styled(motion.div)`
 width: 100%;
 flex: 1;
@@ -49,7 +54,7 @@ padding: 0 35px;
 
 .text{
   color: ${pryColor};
-  width: 556px;
+  width: 38%;
   display: flex;
   flex-direction: column;
   gap: 40px;
@@ -69,5 +74,38 @@ font-family: ${abril.style.fontFamily};
   }
 }
 
+
+@media (max-width: 576px){
+  .text{
+    display: none;
+  }
+}
+
+@media (max-width: 768px){
+.text{
+  gap: 20px;
+
+  h1{
+    font-size: 31px;
+  }
+
+  h2{
+    font-size: 16px;
+  }
+}
+}
+
+@media (max-width: 992px){
+  .text{
+    gap: 20px;
+
+    h1{
+      font-size: 39px;
+    }
+    h2{
+      font-size: 20px;
+    }
+  }
+}
 
 `

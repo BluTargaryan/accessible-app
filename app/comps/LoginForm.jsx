@@ -38,14 +38,14 @@ const StyledForm = styled(motion.form)`
 flex-direction: column;
 justify-content: center;
 gap: 33px;
-width: 674px;
-height: 530px;
+width: 47%;
+height: 90%;
 background: ${pryColor};
 color: ${bgColor};
 padding-left: 91px;
 
 .form-text{
-width: 100%;
+width: 80%;
 display: flex;
 flex-direction: column;
 gap: 31px;
@@ -57,21 +57,72 @@ p{
 }
 }
 
-
-
 .form-input{
-    width: 450px;
+    width: 80%;
     display: flex;
 flex-direction: column;
 gap: 17px;
+}
 
-label, input{
+
+@media (max-width: 576px){
+flex: 1;
+padding-left:0;
+align-items: center;
+justify-content: center;
+height: 100%;
+gap: 25px;
+
+
+.form-text{
+  width: 90%;
+  gap: 15px;
+  border: 1px solid white;
+
+  h2{
     font-size: 20px;
+  }
+  p{
+    font-size: 10px;
+  }
+}
+
+.form-input{
+  width: 90%;
+  gap: 11px;
 }
 
 
+label, input, button{
+    font-size: 16px;
 }
 
+input{
+    height: 30px;
+}
+
+button{
+    width: 90%;
+}
+}
+
+@media (min-width:577px)and  (max-width:992px){
+padding-left: 45px;
+  gap: 28px;
+
+  .form-text{
+    gap: 15px;
+
+    h2{
+      font-size: 25px;
+    }
+    p{
+      font-size: 13px;
+    }
+  }
+
+  
+}
 
 
 `

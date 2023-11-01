@@ -33,6 +33,10 @@ ul{
     list-style:none ;
 }
 
+label, input{
+    font-size: 20px;
+}
+
 input{
 background: none;
 border: 3px solid ${bgColor};
@@ -74,6 +78,8 @@ button{
         color: ${bgColor};
     }
 }
+
+
 `
 
 export default GlobalStyles;

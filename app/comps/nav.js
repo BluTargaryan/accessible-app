@@ -26,5 +26,18 @@ z-index: 10;
 span{
     font-size: 31px;
 }
+
+
+@media (max-width: 576px){
+    span{
+        font-size: 20px;
+    }
+}
+
+@media (min-width:577px)and  (max-width:992px){
+    span{
+        font-size: 25px;
+    }
+}
 `
 

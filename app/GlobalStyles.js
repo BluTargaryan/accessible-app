@@ -6,6 +6,7 @@ import { createGlobalStyle } from 'styled-components'
 const bgColor= "#030507"
 const pryColor = "#7EA6F1"
 const txtColor = "#ECEFF3"
+const errorColor = "#FF6666"
 
 const GlobalStyles = createGlobalStyle`
 *{
@@ -35,6 +36,22 @@ ul{
 
 label, input{
     font-size: 20px;
+ 
+}
+
+.flex{
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.icon{
+    color: ${bgColor};
+    font-size: 20px;
+}
+
+.bgError{
+    background: ${errorColor} !important;
 }
 
 input{
@@ -60,7 +77,6 @@ button{
     height: 45px;
     text-align: center;
     background: ${bgColor};
-    color: ${pryColor};
     border: none;
     border-radius: 4px ;
     cursor: pointer;

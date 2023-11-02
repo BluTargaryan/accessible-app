@@ -20,7 +20,7 @@ export default function Home() {
 <NavComp/>
 <Holder>
 <div className="text">
-<h1>Welcome back to <span className="icon">SmartStudy</span></h1>
+<h1>Welcome back to <span className="logo">SmartStudy</span></h1>
 <h2>Please login using your account details</h2>
 </div>
 
@@ -63,7 +63,7 @@ padding: 0 35px;
    font-weight: 400;
    line-height: normal;
 
-.icon{
+.logo{
 font-family: ${abril.style.fontFamily};
 }
   }

@@ -19,7 +19,9 @@ const [isError2, setIsError2] = useState(false);
 const [formText, setFormText] = useState("Type in the <b>username</b> and <b>password</b> sent to your email");
 //state for button error
 const [isButtonError, setIsButtonError] = useState(false);
-
+//state for input name 
+const [inputName, setInputName] = useState('')
+const [inputPassCode, setInputPassCode] = useState('')
 
 //sample login details
 const testName = 'donut'
@@ -29,37 +31,55 @@ const testCode = '1234sdw'
 const buttonColor = isButtonError?errorColor:pryColor
 
 //func 
-const loginCheck= ()=>{
-  let name = document.getElementById('username').value;
-  let passcode = document.getElementById('passcode').value;
+const loginCheck= (e)=>{
 
-  let namePattern = /^[a-zA-Z\s]+$/; 
-  let passwordPattern = /^(?=.*\d)(?=.*[a-zA-Z]).{6,}$/; 
+  e.preventDefault()
 
 
-  if (namePattern.test(name) && passwordPattern.test(password)) {
 
-    if (name === testName && passcode === testCode) {
-        console.log("Login successful!");
-    } else {
-
+  if (inputName === testName && inputPassCode === testCode) {
+    console.log("Login successful!");
+    if(isError1===false || isError2===false){
+      successState()
+      setInputName('')
+      setInputPassCode('')
     }
-} else {
-
+} 
+else {
+if(inputName !== testName){
+toggleError( isError1, setIsError1, "The <b>username</b> doesn't match the value in our records. please check and re-enter the username")
+setInputName('')
+}
+if(inputPassCode !== testCode){
+toggleError( isError2, setIsError2, "The <b>passcode</b> doesn't match the value in our records. please check and re-enter the passcode")
+  setInputPassCode('')
+}
 }
 }
 
 //func to switch errorstate
-const toggleError = (e)=>{
-  e.preventDefault()
-  setIsError(!isError)
-  document.getElementById('form').classList.toggle('bgError')
-  document.getElementById('button').style.color =setIsButtonError(!isButtonError)
+const toggleError = (error, setError, fText)=>{
+  
+  setError(true)
+  document.getElementById('form').classList.add('bgError')
+setIsButtonError(true)
+  setFormText(fText)
+}
+
+//func on successful state
+
+const successState = () =>{
+  setIsError1(false)
+  setIsError2(false)
+  document.getElementById('form').classList.remove('bgError')
+  setIsButtonError(false)
+  setFormText("Type in the <b>username</b> and <b>password</b> sent to your email")
 }
 
 
+
     return(
-        <StyledForm id="form" onSubmit={toggleError}>
+        <StyledForm id="form" onSubmit={loginCheck}>
   <div className="form-text">
     <h2>Log in</h2>
     <p dangerouslySetInnerHTML={{ __html: formText }}>
@@ -73,7 +93,7 @@ const toggleError = (e)=>{
     isError={isError1}/>
     <label htmlFor="username"> Username</label>
     </span>
-    <input type="text" id="username"/>
+    <input type="text" id="username" value={inputName}  onChange={(e) => setInputName(e.target.value)}/>
   </div>
 
 
@@ -83,7 +103,7 @@ const toggleError = (e)=>{
     isError={isError2}/>
     <label htmlFor="passcode"> Passcode</label>
     </span>
-    <input type="password" id="passcode"/>
+    <input type="password" id="passcode" value={inputPassCode}  onChange={(e) => setInputPassCode(e.target.value)}/>
   </div>
 
 <button id="button" style={{color:buttonColor}}>Submit</button>

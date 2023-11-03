@@ -1,6 +1,7 @@
 'use client'
 
 
+
 import { LoginForm } from "./comps/LoginForm";
 //comps
 import { NavComp } from "./comps/nav"

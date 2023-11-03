@@ -7,6 +7,7 @@ const bgColor= "#030507"
 const pryColor = "#7EA6F1"
 const txtColor = "#ECEFF3"
 const errorColor = "#FF6666"
+const accentColor = "#AD9A7F"
 
 const GlobalStyles = createGlobalStyle`
 *{
@@ -50,6 +51,12 @@ label, input{
     font-size: 20px;
 }
 
+.icon-pry{
+    color: ${pryColor};
+    font-size: 20px;
+}
+
+
 .bgError{
     background: ${errorColor} !important;
 }
@@ -92,6 +99,22 @@ button{
     &:active{
         background: ${txtColor};
         color: ${bgColor};
+    }
+}
+
+.btn-pry{
+    background: ${pryColor} !important; 
+
+    &:hover{
+        box-shadow: 4px 0px 4px 0px rgba(126, 166, 241, 0.25), -4px 0px 4px 0px rgba(126, 166, 241, 0.25), 0px -4px 4px 0px rgba(126, 166, 241, 0.25), 0px 4px 4px 0px rgba(126, 166, 241, 0.25);
+    }
+}
+
+.btn-accent{
+    background: ${accentColor} !important; 
+
+    &:hover{
+        box-shadow: 4px 0px 4px 0px rgba(173, 154, 127, 0.25), -4px 0px 4px 0px rgba(173, 154, 127, 0.25), 0px -4px 4px 0px rgba(173, 154, 127, 0.25), 0px 4px 4px 0px rgba(173, 154, 127, 0.25);
     }
 }
 

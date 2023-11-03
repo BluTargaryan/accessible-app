@@ -1,4 +1,6 @@
 'use client'
+//router
+import { useRouter } from 'next/navigation'
 //motion and styled
 import { motion } from "framer-motion";
 import styled from "styled-components";
@@ -12,6 +14,9 @@ import { MdError } from "react-icons/md";
 import { ErrorIcon } from "./ErrorIcon";
 
 export const LoginForm = ()=>{
+
+  //routing
+  const router = useRouter()
 //state for error case
 const [isError1, setIsError1] = useState(false);
 const [isError2, setIsError2] = useState(false);
@@ -43,6 +48,7 @@ const loginCheck= (e)=>{
       successState()
       setInputName('')
       setInputPassCode('')
+      router.push('/landing')
     }
 } 
 else {

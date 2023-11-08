@@ -6,12 +6,12 @@ import styled from "styled-components";
 //router
 import { useRouter } from 'next/navigation'
 
-import {MdOutlineArrowUpward, MdOutlineLogout} from 'react-icons/md'
+import {MdOutlineArrowUpward, MdKeyboardBackspace} from 'react-icons/md'
 
-import { abril ,poppins} from "../lib/fonts";
+import { abril } from "../lib/fonts";
 import { bgColor, pryColor } from "../lib/colors";
 
-export const HomeNav = ()=>{
+export const FormNav = ()=>{
     //routing
   const router = useRouter()
 
@@ -27,8 +27,8 @@ const scrollToTop = () =>{
 
 //func to logout
 
-const logOut = () =>{
-    router.push('/')
+const goBack = () =>{
+    router.push('/landing')
 }
 
     return(
@@ -38,9 +38,9 @@ const logOut = () =>{
             <MdOutlineArrowUpward className="icon-pry"/>
             </span>
        
-            <span className="flex border" onClick={()=>logOut()}>
-            <span>Logout</span>
-            <MdOutlineLogout className="icon-pry"/>
+            <span className="flex border" onClick={()=>goBack()}>
+            <span>Go back</span>
+            <MdKeyboardBackspace className="icon-pry"/>
             </span>
         </Nav>
     )

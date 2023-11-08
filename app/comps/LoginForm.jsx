@@ -53,18 +53,18 @@ const loginCheck= (e)=>{
 } 
 else {
 if(inputName !== testName){
-toggleError( isError1, setIsError1, "The <b>username</b> doesn't match the value in our records. please check and re-enter the username")
+toggleError( setIsError1, "The <b>username</b> doesn't match the value in our records. please check and re-enter the username")
 setInputName('')
 }
 if(inputPassCode !== testCode){
-toggleError( isError2, setIsError2, "The <b>passcode</b> doesn't match the value in our records. please check and re-enter the passcode")
+toggleError( setIsError2, "The <b>passcode</b> doesn't match the value in our records. please check and re-enter the passcode")
   setInputPassCode('')
 }
 }
 }
 
 //func to switch errorstate
-const toggleError = (error, setError, fText)=>{
+const toggleError = ( setError, fText)=>{
   
   setError(true)
   document.getElementById('form').classList.add('bgError')

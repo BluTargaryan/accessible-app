@@ -14,12 +14,13 @@ const GlobalStyles = createGlobalStyle`
     margin:0 ;
     padding:0 ;
     box-sizing:border-box ;
+   
 }
 
 body{
     background: ${bgColor};
     color: ${pryColor};
-    width:100vw ;
+    width:100vw;
     height:auto ;
     overflow-x:hidden ;
     font-family: ${poppins.style.fontFamily};
@@ -37,7 +38,6 @@ ul{
 
 label, input{
     font-size: 20px;
- 
 }
 
 .flex{
@@ -108,6 +108,16 @@ button{
     &:hover{
         box-shadow: 4px 0px 4px 0px rgba(126, 166, 241, 0.25), -4px 0px 4px 0px rgba(126, 166, 241, 0.25), 0px -4px 4px 0px rgba(126, 166, 241, 0.25), 0px 4px 4px 0px rgba(126, 166, 241, 0.25);
     }
+
+    &:focus{
+        outline: none;
+        color: ${txtColor}; 
+        border: 3px solid ${txtColor};
+    }
+    &:active{
+        background: ${txtColor};
+        color: ${bgColor};
+    }
 }
 
 .btn-accent{
@@ -116,7 +126,20 @@ button{
     &:hover{
         box-shadow: 4px 0px 4px 0px rgba(173, 154, 127, 0.25), -4px 0px 4px 0px rgba(173, 154, 127, 0.25), 0px -4px 4px 0px rgba(173, 154, 127, 0.25), 0px 4px 4px 0px rgba(173, 154, 127, 0.25);
     }
+
+    &:focus{
+        outline: none;
+        color: ${txtColor}; 
+        border: 3px solid ${txtColor};
+    }
+    &:active{
+        background: ${txtColor};
+        color: ${bgColor};
+    }
 }
+
+
+
 
 
 `

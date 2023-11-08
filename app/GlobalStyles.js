@@ -8,6 +8,7 @@ const pryColor = "#7EA6F1"
 const txtColor = "#ECEFF3"
 const errorColor = "#FF6666"
 const accentColor = "#AD9A7F"
+const successColor = "#55A95D"
 
 const GlobalStyles = createGlobalStyle`
 *{

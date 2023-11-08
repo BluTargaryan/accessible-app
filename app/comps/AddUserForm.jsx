@@ -14,6 +14,8 @@ import {useState, useEffect} from 'react'
 
 import { bgColor , pryColor, errorColor, txtColor} from "../lib/colors";
 
+
+
 import {MdOutlineKeyboardArrowDown,MdOutlineKeyboardArrowUp} from "react-icons/md";
 import { ErrorIcon } from "./ErrorIcon";
 
@@ -32,35 +34,66 @@ const [inputPassCode, setInputPassCode] = useState('')
 const [inputEmail, setInputEmail] = useState('')
 const [selected, setSelected] = useState('')
 
+//state for button error
+const [isButtonError, setIsButtonError] = useState(false);
+
+//state to open conf alert
+const [openSuccess, setOpenSuccess] = useState(false)
+
 //dropdown options
 const options = [
   'Staff', 'Student', 
 ]
 
-const defaultOption = options[0];
+//button color
+const buttonColor = isButtonError?errorColor:pryColor
 
 const handleChange = (e) => {
   setSelected(e.value)
- console.log(e.value)
 };
 
 //func to add new user
 const registerFunc= (e)=>{
 e.preventDefault()
 
-
-fetch('http://localhost:3000/api/createUser', {
-  method: 'POST',
-  body: JSON.stringify({
-     username: inputName, 
-     email: inputEmail,
-     passcode: inputPassCode, 
-     usertype: selected}),
-});
+if (inputName !== '' && inputPassCode !== ''&& inputEmail !== ''&& selected !== '') {
+uponConfirmation()
+router.push(`/addUser/${inputName}`)
+}else{
+  if(inputName === '') toggleError(setIsErrorName, 'You left the <b>name</b> section empty. Please fill it to successfully register a new user.')
+  if(inputPassCode === '') toggleError(setIsErrorPasscode, 'You left the <b>passcode</b> section empty. Please fill it to successfully register a new user.')
+  if(inputEmail === '') toggleError(setIsErrorEmail, 'You left the <b>email</b> section empty. Please fill it to successfully register a new user.')
+  if(selected === '') toggleError(setIsErrorType, 'You did not select a <b>user type</b>. Please select one to successfully register a new user.')
 }
 
 
+}
 
+//if allowed to add user
+const uponConfirmation = ()=>{
+  fetch('http://localhost:3000/api/createUser', {
+    method: 'POST',
+    body: JSON.stringify({
+       username: inputName, 
+       email: inputEmail,
+       passcode: inputPassCode, 
+       usertype: selected}),
+  });
+}
+
+
+const toggleError = ( setError, fText)=>{
+  setError(true)
+  document.getElementById('form').classList.add('bgError')
+setIsButtonError(true)
+  setFormText(fText)
+}
+
+
+const [isErrorName, setIsErrorName] = useState(false);
+const [isErrorPasscode, setIsErrorPasscode] = useState(false);
+const [isErrorEmail, setIsErrorEmail] = useState(false);
+const [isErrorType, setIsErrorType] = useState(false);
 
 
     return(
@@ -74,6 +107,8 @@ fetch('http://localhost:3000/api/createUser', {
 
   <div className="form-input">
   <span className="flex">
+  <ErrorIcon 
+    isError={isErrorName}/>
     <label htmlFor="username"> Username</label>
     </span>
     <input type="text" id="username" value={inputName}  onChange={(e) => setInputName(e.target.value)}/>
@@ -81,6 +116,8 @@ fetch('http://localhost:3000/api/createUser', {
 
   <div className="form-input">
   <span className="flex">
+  <ErrorIcon 
+    isError={isErrorPasscode}/>
     <label htmlFor="passcode"> Passcode</label>
     </span>
     <input type="text" id="passcode" value={inputPassCode}  onChange={(e) => setInputPassCode(e.target.value)}/>
@@ -88,6 +125,8 @@ fetch('http://localhost:3000/api/createUser', {
 
   <div className="form-input">
   <span className="flex">
+  <ErrorIcon 
+    isError={isErrorEmail}/>
     <label htmlFor="email"> Email</label>
     </span>
     <input type="text" id="email" value={inputEmail}  onChange={(e) => setInputEmail(e.target.value)}/>
@@ -95,6 +134,8 @@ fetch('http://localhost:3000/api/createUser', {
 
   <div className="form-input">
   <span className="flex">
+  <ErrorIcon 
+    isError={isErrorType}/>
     <label htmlFor="type"> User type</label>
     </span>
     <Dropdown options={options}  
@@ -112,7 +153,7 @@ fetch('http://localhost:3000/api/createUser', {
   </div>
   
 
-<button id="button">Submit</button>
+  <button id="button" style={{color:buttonColor}}>Submit</button>
         </StyledForm>
     )
 }

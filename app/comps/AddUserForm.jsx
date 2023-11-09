@@ -238,7 +238,7 @@ flex: 1;
 padding-left:0;
 align-items: center;
 justify-content: center;
-height: 100%;
+height: 600px;
 gap: 25px;
 
 
@@ -257,6 +257,10 @@ gap: 25px;
 .form-input{
   width: 90%;
   gap: 11px;
+
+  .dropdown-placeholder, .dropdown-menu{
+    font-size: 16px;
+  }
 }
 
 
@@ -274,23 +278,41 @@ button{
 }
 }
 
-@media (min-width:577px)and  (max-width:992px){
+@media (min-width: 768px) and (max-width: 991px){
 padding-left: 45px;
   gap: 28px;
+  width: 50%;
+
+  button{
+    width: 80%;
+  }
 
   .form-text{
     gap: 15px;
 
     h2{
-      font-size: 25px;
+      font-size: 20px;
     }
     p{
       font-size: 13px;
     }
   }
 
-  
+  .form-input{
+    .dropdown-placeholder, .dropdown-menu{
+    font-size: 16px;
+  }
+  }
 }
 
+@media (min-width: 992px) and (max-width: 1199px){
+  padding: 0;
+  align-items: center;
+  height: 900px;
+
+  button{
+    width: 80%;
+  }
+}
 
 `

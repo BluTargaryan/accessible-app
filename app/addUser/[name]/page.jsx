@@ -4,6 +4,7 @@
 import { motion } from "framer-motion";
 import styled from "styled-components";
 import { bgColor, successColor } from "@/app/lib/colors";
+import { useRouter } from "next/navigation";
 
 import { useParams } from "next/navigation";
 
@@ -11,11 +12,16 @@ export default function Success(){
     const params = useParams();
     const name = params.name
 
+    const router = useRouter()
+
+    const routeToHome = ()=>{
+router.push('/landing')
+    }
     return(
         <StyledSuccess>
 <h1>New user successfully registered!</h1>
 <p>{name} has been added successfully.</p>
-<button>Submit</button>
+<button onClick={()=>routeToHome()}>Go to Home</button>
         </StyledSuccess>
     )
 }

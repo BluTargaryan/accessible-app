@@ -4,7 +4,7 @@ import styled from "styled-components";
 import { abril } from "../lib/fonts";
 import { bgColor, pryColor } from "../lib/colors";
 
-import { useState } from "react";
+import { useRouter } from "next/navigation";
 
 import Dropdown from 'react-dropdown';
 import 'react-dropdown/style.css';
@@ -14,7 +14,7 @@ import {MdOutlineKeyboardArrowUp, MdOutlineKeyboardArrowDown} from 'react-icons/
 import { Post } from "./Post";
 
 export const Feed = ()=>{
-
+const router = useRouter()
 
   const optionPostType = [
     'Post', 'Lecture'
@@ -24,7 +24,10 @@ export const Feed = ()=>{
   ];
 
  
- 
+ //functo go to add post page
+const toAddPost = ()=>{
+  router.push('/addPost')
+}
 
   return(
     <StyledFeed id="feed">
@@ -53,7 +56,7 @@ export const Feed = ()=>{
   arrowOpen={<MdOutlineKeyboardArrowUp className="icon"/>}/>
         </div>
 
-        <button className="btn-accent">Add Post</button>
+        <button className="btn-accent" onClick={()=>toAddPost()}>Add Post</button>
         </div>
 
         <div className="feed-main">

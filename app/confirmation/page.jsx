@@ -77,5 +77,65 @@ const StyledConfirm = styled(motion.div)`
               border: none;
             }
         }
+
+        
+    }
+
+    @media (max-width: 576px){
+    gap: 40px;
+
+    h1,p{
+        width: 80%;
+    }
+
+    .buttons{
+        width: 90%;
+    }
+    h1{
+        font-size: 39px;
+        
+    }
+
+    p{
+        font-size: 25px;
+    }
+    }
+
+    @media (min-width: 768px) and (max-width: 991px){
+        gap: 40px;
+
+    h1,p{
+        width: 80%;
+    }
+
+    .buttons{
+        width: 90%;
+    }
+
+    h1{
+        font-size: 39px;
+        
+    }
+
+    p{
+        font-size: 25px;
+    }
+    }
+
+    @media (min-width: 992px) and (max-width: 1199px){
+        gap: 35px;
+
+h1,p{
+    width: 70%;
+}
+
+h1{
+    font-size: 39px;
+    
+}
+
+p{
+    font-size: 25px;
+}
     }
 `

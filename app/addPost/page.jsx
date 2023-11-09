@@ -8,7 +8,7 @@
 import { UserForm } from "../comps/AddUserForm";
 import { FormNav } from "../comps/formnav";
 
-
+import { PostForm } from "../comps/AddPostForm";
 
 import { pryColor } from "../lib/colors";
 import { abril } from "../lib/fonts";
@@ -18,24 +18,24 @@ import { motion } from "framer-motion";
 import styled from "styled-components";
 
 
-export default function addUser() {
+export default function addPost() {
   return (
-  <StyledUser>
+  <StyledPost>
 <FormNav/>
 <Holder>
 <div className="text">
-<h1>Add a new user to <span className="logo">SmartStudy</span></h1>
-<h2>Put in their details that they would use to login</h2>
+<h1>Add a new post to <span className="logo">SmartStudy</span></h1>
+<h2>Put in relevant details and create a new post!</h2>
 </div>
 
-<UserForm/>
+<PostForm/>
 
 </Holder>
-  </StyledUser>
+  </StyledPost>
   )
 }
 
-const StyledUser = styled(motion.main)`
+const StyledPost = styled(motion.main)`
 width: 100%;
 height: auto;
 padding: 20px 0;

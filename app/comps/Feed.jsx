@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import styled from "styled-components";
 import { abril } from "../lib/fonts";
 import { bgColor, pryColor } from "../lib/colors";
-
+import { useState,useEffect } from "react";
 import { useRouter } from "next/navigation";
 
 import Dropdown from 'react-dropdown';
@@ -13,7 +13,12 @@ import {MdOutlineKeyboardArrowUp, MdOutlineKeyboardArrowDown} from 'react-icons/
 
 import { Post } from "./Post";
 
-export const Feed = ()=>{
+import useSWR from 'swr'
+ 
+const fetcher = (...args) => fetch(...args).then((res) => res.json())
+
+
+export const  Feed = ()=>{
 const router = useRouter()
 
   const optionPostType = [
@@ -28,6 +33,11 @@ const router = useRouter()
 const toAddPost = ()=>{
   router.push('/addPost')
 }
+
+const { data, error } = useSWR('/api/getPosts', fetcher)
+
+ console.log(data)
+
 
   return(
     <StyledFeed id="feed">
@@ -60,12 +70,18 @@ const toAddPost = ()=>{
         </div>
 
         <div className="feed-main">
-          <Post/>
-          <Post/>
-          <Post/>
-          <Post/>
-          <Post/>
-          <Post/>
+          {
+            data.map((post)=>(
+<Post
+key={post.id}
+id={post.id}
+title={post.title}
+posttype={post.posttype}
+img={post.imgurl}
+/>
+            ))
+          }
+          
         </div>
     </StyledFeed>
   )
@@ -183,13 +199,14 @@ h1{
 
   button{
     height: 36px;
+    width: 270px;
   }
  }
 }
 @media (min-width: 768px) and (max-width: 991px) { /* Medium devices */
 align-items: center;
  gap: 34px;
-
+padding: 15px;
  h1{
   font-size: 31px;
  }
@@ -199,13 +216,17 @@ align-items: center;
   gap: 20px;
 
   h2{
-    font-size: 20px;
+    font-size: 16px;
   }
 
   .filters-main{
-    gap: 20px;
+    gap: 15px;
+    width: 70%;
     height: auto;
 
+    .dropdown,.dropdown-control{
+      width: 100%;
+    }
     .dropdown-placeholder, .dropdown-menu{
       font-size: 16px;
     }
@@ -232,6 +253,8 @@ align-items: center;
     gap: 20px;
 
   }
+
+
 
 
  }

@@ -53,7 +53,7 @@ const Holder = styled(motion.div)`
 width: 100%;
 height: auto;
 display: flex;
-align-items: center;
+align-items: start;
 justify-content: space-between;
 padding: 0 35px;
 margin-top: 100px;

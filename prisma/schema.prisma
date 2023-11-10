@@ -17,3 +17,13 @@ model User {
   passcode String  @db.VarChar(50)
   usertype String 
 }
+
+model Post{
+   id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  title     String   @db.VarChar(255)
+  subject     String   @db.VarChar(255)
+  posttype     String  
+  content   String
+  imgurl   String
+}

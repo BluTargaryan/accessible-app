@@ -9,6 +9,7 @@ const txtColor = "#ECEFF3"
 const errorColor = "#FF6666"
 const accentColor = "#AD9A7F"
 const successColor = "#55A95D"
+const pryShadeColor = "#0F141D"
 
 const GlobalStyles = createGlobalStyle`
 *{
@@ -77,6 +78,53 @@ padding-left: 3%;
     color: ${txtColor};
 }
 
+}
+
+.quill{
+    border: 3px solid ${bgColor};
+border-radius: 4px;
+height: 600px;
+color: ${bgColor} !important;
+font-family: ${poppins.style.fontFamily};
+font-size: 16px;
+
+.ql-formats{
+    button{
+        &:hover{
+        box-shadow: none;
+    }
+    &:focus{
+        box-shadow: none;
+       border:3px solid ${bgColor};
+    }
+    }
+
+    &:hover{
+        box-shadow: none;
+        color: ${bgColor};
+       background: ${bgColor};
+    }
+
+    &:focus{
+        box-shadow: none;
+        color: ${bgColor};
+       border:3px solid ${bgColor};
+       outline: none;
+    }
+}
+
+.ql-toolbar{
+    border: none;
+    border-bottom: 3px solid ${bgColor};
+    height: 7% !important;
+    
+}
+
+#snow-container, .ql-container{
+    height: 93% !important;
+    border: none;
+    font-size: 16px;
+}
 }
 
 button{

@@ -11,6 +11,8 @@ export default async function (req, res) {
           }
     }catch(error){
         console.log(error)
+    }finally {
+        await prisma.$disconnect();
     }
   
 }

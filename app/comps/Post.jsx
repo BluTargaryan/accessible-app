@@ -5,12 +5,14 @@ import styled from "styled-components";
 import { bgColor, errorColor, pryColor, pryShadeColor } from "../lib/colors";
 import Image from "next/image";
 
+import { useRouter } from "next/router";
+
 import {MdEdit,MdDelete} from 'react-icons/md'
 
 
 export const Post = ({id, title, posttype, img})=>{
 
-    const url = 'https://images.unsplash.com/photo-1682687982049-b3d433368cd1?q=80&w=1771&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+    const router = useRouter()
 
     return(
         <StyledPost>

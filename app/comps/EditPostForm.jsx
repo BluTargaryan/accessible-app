@@ -24,19 +24,12 @@ import {MdOutlineKeyboardArrowDown,MdOutlineKeyboardArrowUp} from "react-icons/m
 import { ErrorIcon } from "./ErrorIcon";
 
 
-export const PostForm = () =>{
-    const [formText, setFormText] = useState("Type in the <b>title, subject, content, image</b> and select the <b>type</b> of the new post. You can add images as well to the <b>content</b> section, but make sure it has a text label below it!");
+export const EditForm = ({id}) =>{
+    const [formText, setFormText] = useState("Edit the <b>title, subject, content, image</b> and select the <b>type</b> of the post.");
     
 
       //routing
   const router = useRouter()
-
-
-    const [isErrorTitle, setIsErrorTitle] = useState(false);
-    const [isErrorSubject, setIsErrorSubject] = useState(false);
-    const [isErrorURL, setIsErrorURL] = useState(false);
-    const [isErrorType, setIsErrorType] = useState(false);
-    const [isErrorContent, setIsErrorContent] = useState(false);
 
     const [inputTitle, setInputTitle] = useState('')
     const [inputSubject, setInputSubject] = useState('')
@@ -66,8 +59,8 @@ const addDesc = (value) => {
 
 //if allowed to add post
 const uponConfirmation = ()=>{
-  fetch('http://localhost:3000/api/createPost', {
-    method: 'POST',
+  fetch(`http://localhost:3000/api/createPost/${id}`, {
+    method: 'PUT',
     body: JSON.stringify({
        title:inputTitle,
       subject:inputSubject,
@@ -78,35 +71,20 @@ const uponConfirmation = ()=>{
   });
 }
 
-const toggleError = ( setError, fText)=>{
-  setError(true)
-  document.getElementById('form').classList.add('bgError')
-setIsButtonError(true)
-  setFormText(fText)
-}
+
 
 
 //func to add new post
-const registerPost= (e)=>{
+const editPost= (e)=>{
   e.preventDefault()
-  
-  if (inputTitle !== '' && inputSubject !== ''&& inputType !== ''&& inputContent !== '') {
-  uponConfirmation()
-  router.push(`/addPost/${inputTitle}`)
-  }else{
-    if(inputTitle === '') toggleError(setIsErrorTitle, 'You left the <b>title</b> section empty. Please fill it to successfully add a new post.')
-    if(inputSubject === '') toggleError(setIsErrorSubject, 'You did not select a <b>subject</b>. Please select one to successfully add a new post.')
-    if(inputURL === '') toggleError(setIsErrorURL, 'You left the <b>image</b> section empty. Please fill it to successfully add a new post.')
-    if(inputType === '') toggleError(setIsErrorType, 'You did not select a <b>post type</b>. Please select one to successfully add a new post.')
-    if(inputContent === '') toggleError(setIsErrorContent, 'You left the <b>content</b> section empty. Please fill it to successfully add a new post.')
-  }
+
   
   
   }
 
 
     return(
-        <StyledForm id="form" onSubmit={registerPost}>
+        <StyledForm id="form" onSubmit={editPost}>
   <div className="form-text">
     <h2>New post</h2>
     <p dangerouslySetInnerHTML={{ __html: formText }}>
@@ -367,13 +345,12 @@ padding-left: 45px;
   align-items: center;
   height: 1500px;
 
-    .ql-toolbar{
+  .ql-toolbar{
     height: 10% !important; 
 }
 
 #snow-container, .ql-container{
     height: 90% !important;
-    font-size: 13px;
 }
 
   button{

@@ -20,6 +20,10 @@ const toEdit = () =>{
     router.push(`/edit?id=${id}&title=${title}&posttype=${posttype}&img=${img}&subject=${subject}&content=${content}`)
 }
 
+const toDelete = () =>{
+    router.push(`/confirmation?id=${id}&title=${title}`)
+}
+
     return(
         <StyledPost>
             <div className="title-div">
@@ -34,7 +38,7 @@ const toEdit = () =>{
     <MdEdit/>
     <p>Edit</p>
     </span>
-    <span className="delete">
+    <span className="delete" onClick={()=>toDelete()}>
     <MdDelete/>
     <p>Delete</p>
     </span>

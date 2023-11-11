@@ -5,16 +5,36 @@ import { motion } from "framer-motion";
 import styled from "styled-components";
 import { bgColor, errorColor, txtColor } from "../lib/colors";
 
+import { useRouter, useSearchParams } from "next/navigation";
+
 export default function Confirmation(){
+    const searchParams = useSearchParams()
+    const id = searchParams.get('id')
+    const title = searchParams.get('title')
 
+    const router = useRouter();
 
+    const caseNo = () =>{
+        router.back()
+    }
+
+    const caseYes = () =>{
+        fetch(`http://localhost:3000/api/deletePost`, {
+            method: 'DELETE',
+            body: JSON.stringify({
+              id:id,
+          }),
+          });
+
+          router.push(`/success?title=${title}`)
+    }
     return(
         <StyledConfirm>
             <p>Are you sure you want to delete post with title:</p>
-<h1>Subject title for post</h1>
+<h1>{title}</h1>
 <div className="buttons">
-<button>No, do not delete</button>
-<button id="btn">Yes, delete it</button>
+<button onClick={()=>caseNo()}>No, do not delete</button>
+<button id="btn" onClick={()=>caseYes()}>Yes, delete it</button>
 </div>
 
         </StyledConfirm>

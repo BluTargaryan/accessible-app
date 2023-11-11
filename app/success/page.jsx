@@ -4,15 +4,21 @@
 import { motion } from "framer-motion";
 import styled from "styled-components";
 import { bgColor, successColor } from "../lib/colors";
+import { useRouter, useSearchParams } from "next/navigation";
 
 export default function Success(){
+    const searchParams = useSearchParams()
+    const title = searchParams.get('title')
+
+    const router = useRouter();
+
 
 
     return(
         <StyledSuccess>
-<h1>New user successfully registered!</h1>
-<p>User1122 has been added successfully.</p>
-<button>Submit</button>
+<h1>{title}</h1>
+<p>has been deleted successfully.</p>
+<button onClick={()=>router.push('/landing')}>Continue</button>
         </StyledSuccess>
     )
 }

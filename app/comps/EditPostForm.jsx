@@ -24,18 +24,19 @@ import {MdOutlineKeyboardArrowDown,MdOutlineKeyboardArrowUp} from "react-icons/m
 import { ErrorIcon } from "./ErrorIcon";
 
 
-export const EditForm = ({id}) =>{
+export const EditForm = ({id, title, posttype, img, subject, content}) =>{
     const [formText, setFormText] = useState("Edit the <b>title, subject, content, image</b> and select the <b>type</b> of the post.");
     
 
       //routing
   const router = useRouter()
 
-    const [inputTitle, setInputTitle] = useState('')
-    const [inputSubject, setInputSubject] = useState('')
-    const [inputURL, setInputURL] = useState('')
-    const [inputType, setInputType] = useState('')
-    const [inputContent, setInputContent] = useState('')
+  const [idState, setId] = useState(id)
+    const [inputTitle, setInputTitle] = useState(title)
+    const [inputSubject, setInputSubject] = useState(subject)
+    const [inputURL, setInputURL] = useState(img)
+    const [inputType, setInputType] = useState(posttype)
+    const [inputContent, setInputContent] = useState(content)
 
 
 //state for button error
@@ -59,9 +60,10 @@ const addDesc = (value) => {
 
 //if allowed to add post
 const uponConfirmation = ()=>{
-  fetch(`http://localhost:3000/api/createPost/${id}`, {
+  fetch(`http://localhost:3000/api/editPost`, {
     method: 'PUT',
     body: JSON.stringify({
+      id:idState,
        title:inputTitle,
       subject:inputSubject,
       imgurl:inputURL,
@@ -78,15 +80,15 @@ const uponConfirmation = ()=>{
 const editPost= (e)=>{
   e.preventDefault()
 
-  
-  
+  uponConfirmation()
+  router.push(`/edit/${inputTitle}`)
   }
 
 
     return(
         <StyledForm id="form" onSubmit={editPost}>
   <div className="form-text">
-    <h2>New post</h2>
+    <h2>Edit post</h2>
     <p dangerouslySetInnerHTML={{ __html: formText }}>
     </p>
   </div>
@@ -94,8 +96,6 @@ const editPost= (e)=>{
 
   <div className="form-input">
   <span className="flex">
-  <ErrorIcon 
-    isError={isErrorTitle}/>
     <label htmlFor="title"> Title</label>
     </span>
     <input type="text" id="title" value={inputTitle}  onChange={(e) => setInputTitle(e.target.value)}/>
@@ -103,13 +103,13 @@ const editPost= (e)=>{
 
   <div className="form-input">
   <span className="flex">
-  <ErrorIcon 
-    isError={isErrorSubject}/>
+
     <label htmlFor="subject"> Subject</label>
     </span>
     <Dropdown options={optionsSubject}  
     id='subject'
     onChange={(val) => handleChange(val, setInputSubject)}
+    value={inputSubject}
         placeholder="Select its related subject" 
         className="dropdown" 
         controlClassName="dropdown-control" 
@@ -123,8 +123,7 @@ const editPost= (e)=>{
 
   <div className="form-input">
   <span className="flex">
-  <ErrorIcon 
-    isError={isErrorURL}/>
+
     <label htmlFor="url">Image URL</label>
     </span>
     <input type="text" id="url" value={inputURL}  onChange={(e) => setInputURL(e.target.value)}/>
@@ -132,13 +131,13 @@ const editPost= (e)=>{
 
   <div className="form-input">
   <span className="flex">
-  <ErrorIcon 
-    isError={isErrorType}/>
+
     <label htmlFor="type"> Post type</label>
     </span>
     <Dropdown options={optionsPost}  
     id='type'
     onChange={(val) => handleChange(val, setInputType)}
+    value={inputType}
         placeholder="Select post type" 
         className="dropdown" 
         controlClassName="dropdown-control" 
@@ -152,8 +151,7 @@ const editPost= (e)=>{
 
   <div className="form-input">
   <span className="flex">
-  <ErrorIcon 
-    isError={isErrorContent}/>
+
     <label htmlFor="content"> Content</label>
     </span>
     <ReactQuill 

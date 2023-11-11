@@ -5,14 +5,20 @@ import styled from "styled-components";
 import { bgColor, errorColor, pryColor, pryShadeColor } from "../lib/colors";
 import Image from "next/image";
 
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 
 import {MdEdit,MdDelete} from 'react-icons/md'
 
 
-export const Post = ({id, title, posttype, img})=>{
 
+export const Post = ({id, title, posttype, img, subject, content})=>{
     const router = useRouter()
+
+
+const toEdit = () =>{
+
+    router.push(`/edit?id=${id}&title=${title}&posttype=${posttype}&img=${img}&subject=${subject}&content=${content}`)
+}
 
     return(
         <StyledPost>
@@ -24,7 +30,7 @@ export const Post = ({id, title, posttype, img})=>{
             <img src={img} alt={`Filler image for the title: ${title}`}/>
             </div>
 <div className="post-tools">
-    <span className="edit">
+    <span className="edit" onClick={()=>toEdit()}>
     <MdEdit/>
     <p>Edit</p>
     </span>
@@ -111,6 +117,7 @@ text-overflow: ellipsis;
             justify-content: center;
             gap: 10px;
             font-size: 16px;
+            cursor: pointer;
         }
 .edit{
     color: ${pryColor};

@@ -36,7 +36,7 @@ const toAddPost = ()=>{
 
 const { data, error } = useSWR('/api/getPosts', fetcher)
 
- console.log(data)
+
 
 
   return(
@@ -70,7 +70,7 @@ const { data, error } = useSWR('/api/getPosts', fetcher)
         </div>
 
         <div className="feed-main">
-          {
+          {data &&
             data.map((post)=>(
 <Post
 key={post.id}
@@ -78,6 +78,8 @@ id={post.id}
 title={post.title}
 posttype={post.posttype}
 img={post.imgurl}
+subject={post.subject}
+content={post.content}
 />
             ))
           }

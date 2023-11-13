@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import styled from "styled-components";
 import { bgColor, errorColor, pryColor, pryShadeColor } from "../lib/colors";
-import Image from "next/image";
+
 
 import { useRouter } from "next/navigation";
 
@@ -11,7 +11,7 @@ import {MdEdit,MdDelete} from 'react-icons/md'
 
 
 
-export const Post = ({id, title, posttype, img, alt, subject, content})=>{
+export const Post = ({id, title, posttype, img, alt, subject, content, usertype})=>{
     const router = useRouter()
 
 
@@ -38,6 +38,9 @@ const toReader = () =>{
             <div className="image" onClick={()=>toReader()}>
             <img src={img} alt={alt}/>
             </div>
+
+            {
+  (usertype==='Staff') &&
 <div className="post-tools">
     <span className="edit" onClick={()=>toEdit()}>
     <MdEdit/>
@@ -48,6 +51,8 @@ const toReader = () =>{
     <p>Delete</p>
     </span>
 </div>
+}
+
         </StyledPost>
     )
 }

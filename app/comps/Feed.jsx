@@ -18,7 +18,7 @@ import useSWR from 'swr'
 const fetcher = (...args) => fetch(...args).then((res) => res.json())
 
 
-export const  Feed = ()=>{
+export const  Feed = ({usertype})=>{
 const router = useRouter()
 
 //states for filters
@@ -46,7 +46,7 @@ const handleType = (e) => {
     'Post', 'Lecture', 'All'
   ];
   const optionSubject = [
-    'History', 'Computer Science','Economics','All'
+    'History', 'Computer Science','Economics','General','All'
   ];
 
  
@@ -89,7 +89,12 @@ const { data, error } = useSWR('/api/getPosts', fetcher)
   arrowOpen={<MdOutlineKeyboardArrowUp className="icon"/>}/>
         </div>
 
-        <button className="btn-accent" onClick={()=>toAddPost()}>Add Post</button>
+        {
+  (usertype==='Staff') &&
+<button className="btn-accent" onClick={()=>toAddPost()}>Add Post</button>
+}
+
+        
         </div>
 
         <div className="feed-main">
@@ -107,6 +112,7 @@ img={post.imgurl}
 alt={post.imgAltText}
 subject={post.subject}
 content={post.content}
+usertype={usertype}
 />
             ))
           }

@@ -13,8 +13,11 @@ import { bgColor , pryColor, errorColor} from "../lib/colors";
 import { MdError } from "react-icons/md";
 import { ErrorIcon } from "./ErrorIcon";
 
-export const LoginForm = ()=>{
+import useSWR from 'swr'
+const fetcher = (...args) => fetch(...args).then((res) => res.json())
 
+export const LoginForm = ()=>{
+  const { data, error } = useSWR('/api/getUsers', fetcher)
   //routing
   const router = useRouter()
 //state for error case
@@ -39,28 +42,34 @@ const buttonColor = isButtonError?errorColor:pryColor
 const loginCheck= (e)=>{
 
   e.preventDefault()
+  for (const user of data) {
+// console.log(user.username)
+// console.log(user.passcode)
+
+    if (inputName === user.username && inputPassCode === user.passcode) {
+      console.log("Login successful!");
+      if(isError1===false || isError2===false){
+        successState()
+        setInputName('')
+        setInputPassCode('')
+        router.push(`/landing?usertype=${encodeURIComponent(user.usertype)}`)
+      }
+      break;
+  } 
+  else {
+  if(inputName !== user.username){
+  toggleError( setIsError1, "The <b>username</b> doesn't match the value in our records. please check and re-enter the username")
+  setInputName('')
+  }
+  if(inputPassCode !== user.passcode){
+  toggleError( setIsError2, "The <b>passcode</b> doesn't match the value in our records. please check and re-enter the passcode")
+    setInputPassCode('')
+  }
+  }
+  }
 
 
 
-  if (inputName === testName && inputPassCode === testCode) {
-    console.log("Login successful!");
-    if(isError1===false || isError2===false){
-      successState()
-      setInputName('')
-      setInputPassCode('')
-      router.push('/landing')
-    }
-} 
-else {
-if(inputName !== testName){
-toggleError( setIsError1, "The <b>username</b> doesn't match the value in our records. please check and re-enter the username")
-setInputName('')
-}
-if(inputPassCode !== testCode){
-toggleError( setIsError2, "The <b>passcode</b> doesn't match the value in our records. please check and re-enter the passcode")
-  setInputPassCode('')
-}
-}
 }
 
 //func to switch errorstate
@@ -111,8 +120,11 @@ const successState = () =>{
     </span>
     <input type="password" id="passcode" value={inputPassCode}  onChange={(e) => setInputPassCode(e.target.value)}/>
   </div>
+  {
+    data && <button id="button" style={{color:buttonColor}}>Submit</button>
+  }
 
-<button id="button" style={{color:buttonColor}}>Submit</button>
+
         </StyledForm>
     )
 }

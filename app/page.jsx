@@ -15,7 +15,11 @@ import { motion } from "framer-motion";
 import styled from "styled-components";
 
 
+
 export default function Home() {
+
+
+
   return (
   <Login>
 <NavComp/>
@@ -24,8 +28,9 @@ export default function Home() {
 <h1>Welcome back to <span className="logo">SmartStudy</span></h1>
 <h2>Please login using your account details</h2>
 </div>
-
 <LoginForm/>
+
+
 
 </Holder>
   </Login>

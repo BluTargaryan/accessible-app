@@ -11,7 +11,7 @@ import heroImg from '../images/students.jpg'
 import { abril } from "../lib/fonts";
 
 //router
-import { useRouter } from 'next/navigation'
+import { useRouter, useSearchParams } from 'next/navigation'
 
 export default function Landing(){
       //routing
@@ -27,7 +27,8 @@ const addUser = ()=>{
 
 
 
-
+const searchParams = useSearchParams()
+    const usertype = decodeURIComponent(searchParams.get('usertype'))
 
 
 
@@ -41,7 +42,11 @@ const addUser = ()=>{
 <h1>Welcome to <span id="logo">SmartStudy</span>, the home of online learning! </h1>
 <div className="buttons">
 <button className="btn-pry" onClick={()=>scrolltoFeed()}>Go to Feed</button>
-<button className="btn-accent" onClick={()=>addUser()}>Add User</button>
+{
+  (usertype==='Staff') &&
+  <button className="btn-accent" onClick={()=>addUser()}>Add User</button>
+}
+
 </div>
 </div>
 
@@ -51,7 +56,8 @@ alt="Three students studying at a table with laptops, engrossed in their work, f
 />
 
 </header>
-<Feed />
+<Feed 
+usertype={usertype}/>
         </StyledPage>
     )
 }

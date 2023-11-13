@@ -26,7 +26,8 @@ export default function Confirmation(){
           }),
           });
 
-          router.push(`/success?title=${title}`)
+
+          router.push(`/success?title=${encodeURIComponent(title)}`)
     }
     return(
         <StyledConfirm>

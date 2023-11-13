@@ -11,13 +11,14 @@ import {MdEdit,MdDelete} from 'react-icons/md'
 
 
 
-export const Post = ({id, title, posttype, img, subject, content})=>{
+export const Post = ({id, title, posttype, img, alt, subject, content})=>{
     const router = useRouter()
 
 
 const toEdit = () =>{
-
-    router.push(`/edit?id=${id}&title=${title}&posttype=${posttype}&img=${img}&subject=${subject}&content=${content}`)
+   console.log(content)
+    const encodedContent = encodeURIComponent(content);
+    router.push(`/edit?id=${id}&title=${title}&posttype=${posttype}&img=${img}&subject=${subject}&content=${encodedContent}&alt=${alt}`)
 }
 
 const toDelete = () =>{
@@ -31,7 +32,7 @@ const toDelete = () =>{
 <span className="post-type">{posttype}</span>
             </div>
             <div className="image">
-            <img src={img} alt={`Filler image for the title: ${title}`}/>
+            <img src={img} alt={alt}/>
             </div>
 <div className="post-tools">
     <span className="edit" onClick={()=>toEdit()}>

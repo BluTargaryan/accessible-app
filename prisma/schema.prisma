@@ -26,4 +26,5 @@ model Post{
   posttype     String  
   content   String
   imgurl   String
+  imgAltText  String  @default("Alt text for image")
 }

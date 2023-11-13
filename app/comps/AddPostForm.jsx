@@ -35,12 +35,14 @@ export const PostForm = () =>{
     const [isErrorTitle, setIsErrorTitle] = useState(false);
     const [isErrorSubject, setIsErrorSubject] = useState(false);
     const [isErrorURL, setIsErrorURL] = useState(false);
+    const [isErrorImgText, setIsErrorImgText] = useState(false);
     const [isErrorType, setIsErrorType] = useState(false);
     const [isErrorContent, setIsErrorContent] = useState(false);
 
     const [inputTitle, setInputTitle] = useState('')
     const [inputSubject, setInputSubject] = useState('')
     const [inputURL, setInputURL] = useState('')
+    const [inputImgText, setInputImgText] = useState('')
     const [inputType, setInputType] = useState('')
     const [inputContent, setInputContent] = useState('')
 
@@ -72,6 +74,7 @@ const uponConfirmation = ()=>{
        title:inputTitle,
       subject:inputSubject,
       imgurl:inputURL,
+      imgAltText:inputImgText,
     posttype:inputType,
     content: inputContent,
   }),
@@ -90,13 +93,15 @@ setIsButtonError(true)
 const registerPost= (e)=>{
   e.preventDefault()
   
-  if (inputTitle !== '' && inputSubject !== ''&& inputType !== ''&& inputContent !== '') {
+  if (inputTitle !== '' && inputSubject !== ''&& inputType !== ''&& inputContent !== ''&& inputImgText !== '') {
   uponConfirmation()
-  router.push(`/addPost/${inputTitle}`)
+  const encodedTitle = encodeURIComponent(inputTitle)
+  router.push(`/addPost/${encodedTitle}`)
   }else{
     if(inputTitle === '') toggleError(setIsErrorTitle, 'You left the <b>title</b> section empty. Please fill it to successfully add a new post.')
     if(inputSubject === '') toggleError(setIsErrorSubject, 'You did not select a <b>subject</b>. Please select one to successfully add a new post.')
     if(inputURL === '') toggleError(setIsErrorURL, 'You left the <b>image</b> section empty. Please fill it to successfully add a new post.')
+    if(inputImgText === '') toggleError(setIsErrorImgText, 'You left the <b>alt text</b> section empty. Please fill it to successfully add a new post.')
     if(inputType === '') toggleError(setIsErrorType, 'You did not select a <b>post type</b>. Please select one to successfully add a new post.')
     if(inputContent === '') toggleError(setIsErrorContent, 'You left the <b>content</b> section empty. Please fill it to successfully add a new post.')
   }
@@ -150,6 +155,15 @@ const registerPost= (e)=>{
     <label htmlFor="url">Image URL</label>
     </span>
     <input type="text" id="url" value={inputURL}  onChange={(e) => setInputURL(e.target.value)}/>
+  </div>
+
+  <div className="form-input">
+  <span className="flex">
+  <ErrorIcon 
+    isError={isErrorImgText}/>
+    <label htmlFor="title"> Image alt text</label>
+    </span>
+    <input type="text" id="title" value={inputImgText}  onChange={(e) => setInputImgText(e.target.value)}/>
   </div>
 
   <div className="form-input">

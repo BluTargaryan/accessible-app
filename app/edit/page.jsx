@@ -32,13 +32,18 @@ export default function editPost() {
     const title = searchParams.get('title')
     const posttype = searchParams.get('posttype')
     const img = searchParams.get('img')
+    const alt = searchParams.get('alt')
     const subject = searchParams.get('subject')
-    const content = searchParams.get('content')
+    const content = decodeURIComponent(searchParams.get('content'));
+
+
+
 
     const [idState, setId] = useState(id)
     const [titleState, setTitle] = useState(title)
     const [posttypeState, setPostType] = useState(posttype)
     const [imgState, setImg] = useState(img)
+    const [altState, setAlt] = useState(alt)
     const [subjectState, setSubject] = useState(subject)
     const [contentState, setContent] = useState(content)
 
@@ -58,6 +63,7 @@ id={idState}
 title={titleState}
 posttype={posttypeState}
 img={imgState}
+alt={altState}
 subject={subjectState}
 content={contentState}/>
 

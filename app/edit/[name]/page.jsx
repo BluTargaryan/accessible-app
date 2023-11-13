@@ -10,7 +10,8 @@ import { useParams } from "next/navigation";
 
 export default function Success(){
     const params = useParams();
-    const name = params.name
+    const name = decodeURIComponent(params.name)
+    
 
     const router = useRouter()
 

@@ -78,6 +78,7 @@ id={post.id}
 title={post.title}
 posttype={post.posttype}
 img={post.imgurl}
+alt={post.imgAltText}
 subject={post.subject}
 content={post.content}
 />

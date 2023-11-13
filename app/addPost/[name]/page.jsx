@@ -11,7 +11,7 @@ import { useParams } from "next/navigation";
 export default function Success(){
     const params = useParams();
     const name = params.name
-
+const decodedTitle = decodeURIComponent(name)
     const router = useRouter()
 
     const routeToHome = ()=>{
@@ -20,7 +20,7 @@ router.push('/landing')
     return(
         <StyledSuccess>
 <h1>New post successfully added!</h1>
-<p>Subject: {name} has been added successfully.</p>
+<p>Subject: {decodedTitle} has been added successfully.</p>
 <button onClick={()=>routeToHome()}>Go to Home</button>
         </StyledSuccess>
     )

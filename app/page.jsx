@@ -40,11 +40,6 @@ display: flex;
 flex-direction: column;
 `
 
-
-
-
-
-
 const Holder = styled(motion.div)`
 width: 100%;
 flex: 1;

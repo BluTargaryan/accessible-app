@@ -24,7 +24,7 @@ import {MdOutlineKeyboardArrowDown,MdOutlineKeyboardArrowUp} from "react-icons/m
 import { ErrorIcon } from "./ErrorIcon";
 
 
-export const EditForm = ({id, title, posttype, img, subject, content}) =>{
+export const EditForm = ({id, title, posttype, img,alt, subject, content}) =>{
     const [formText, setFormText] = useState("Edit the <b>title, subject, content, image</b> and select the <b>type</b> of the post.");
     
 
@@ -35,6 +35,7 @@ export const EditForm = ({id, title, posttype, img, subject, content}) =>{
     const [inputTitle, setInputTitle] = useState(title)
     const [inputSubject, setInputSubject] = useState(subject)
     const [inputURL, setInputURL] = useState(img)
+    const [inputAlt, setInputAlt] = useState(alt)
     const [inputType, setInputType] = useState(posttype)
     const [inputContent, setInputContent] = useState(content)
 
@@ -67,6 +68,7 @@ const uponConfirmation = ()=>{
        title:inputTitle,
       subject:inputSubject,
       imgurl:inputURL,
+      imgAltText:inputAlt,
     posttype:inputType,
     content: inputContent,
   }),
@@ -81,7 +83,8 @@ const editPost= (e)=>{
   e.preventDefault()
 
   uponConfirmation()
-  router.push(`/edit/${inputTitle}`)
+  const encodedTitle = encodeURIComponent(inputTitle);
+  router.push(`/edit/${encodedTitle}`)
   }
 
 
@@ -127,6 +130,14 @@ const editPost= (e)=>{
     <label htmlFor="url">Image URL</label>
     </span>
     <input type="text" id="url" value={inputURL}  onChange={(e) => setInputURL(e.target.value)}/>
+  </div>
+
+  <div className="form-input">
+  <span className="flex">
+ 
+    <label htmlFor="title"> Image alt text</label>
+    </span>
+    <input type="text" id="title" value={inputAlt}  onChange={(e) => setInputAlt(e.target.value)}/>
   </div>
 
   <div className="form-input">

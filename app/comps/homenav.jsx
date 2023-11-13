@@ -8,8 +8,10 @@ import { useRouter } from 'next/navigation'
 
 import {MdOutlineArrowUpward, MdOutlineLogout} from 'react-icons/md'
 
-import { abril ,poppins} from "../lib/fonts";
+import { abril } from "../lib/fonts";
 import { bgColor, pryColor } from "../lib/colors";
+
+import { useEffect, useState } from "react";
 
 export const HomeNav = ()=>{
     //routing
@@ -32,11 +34,31 @@ const logOut = () =>{
     
 }
 
+//to control view of scroll elements
+const [isVisible, setIsVisible] = useState(true);
+
+useEffect(() => {
+  const handleScroll = () => {
+    const scrollThreshold = 200;
+    const isPastThreshold = window.scrollY < scrollThreshold;
+    setIsVisible(!isPastThreshold);
+  };
+
+  window.addEventListener('scroll', handleScroll);
+
+  // Cleanup the event listener when the component unmounts
+  return () => {
+    window.removeEventListener('scroll', handleScroll);
+  };
+}, []);
+
     return(
         <Nav>
             <span className="flex border" onClick={()=>scrollToTop()}>
             <span id="logo">SmartStudy</span>
-            <MdOutlineArrowUpward className="icon-pry"/>
+            {
+                isVisible && <MdOutlineArrowUpward className="icon-pry"/>
+            }
             </span>
        
             <span className="flex border" onClick={()=>logOut()}>

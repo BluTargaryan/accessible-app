@@ -13,6 +13,9 @@ import { abril } from "../lib/fonts";
 //router
 import { useRouter, useSearchParams } from 'next/navigation'
 
+import { ToTop } from "../comps/toTop";
+import { useState, useEffect } from "react";
+
 export default function Landing(){
       //routing
       const router = useRouter()
@@ -30,12 +33,31 @@ const addUser = ()=>{
 const searchParams = useSearchParams()
     const usertype = decodeURIComponent(searchParams.get('usertype'))
 
+//to control view of scroll elements
+const [isVisible, setIsVisible] = useState(true);
 
+useEffect(() => {
+  const handleScroll = () => {
+    const scrollThreshold = 200;
+    const isPastThreshold = window.scrollY < scrollThreshold;
+    setIsVisible(!isPastThreshold);
+  };
 
+  window.addEventListener('scroll', handleScroll);
+
+  // Cleanup the event listener when the component unmounts
+  return () => {
+    window.removeEventListener('scroll', handleScroll);
+  };
+}, []);
 
     return(
         <StyledPage>
+         
 <HomeNav/>
+{
+  isVisible && <ToTop/>
+}
 
 <header>
 <div className="hero">

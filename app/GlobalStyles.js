@@ -136,6 +136,7 @@ button{
     border: none;
     border-radius: 4px ;
     cursor: pointer;
+    transition: .2s ease-in;
 
     &:hover{
         box-shadow: 4px 0px 4px 0px rgba(0, 0, 0, 0.25), -4px 0px 4px 0px rgba(0, 0, 0, 0.25), 0px -4px 4px 0px rgba(0, 0, 0, 0.25), 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
@@ -153,6 +154,7 @@ button{
 
 .btn-pry{
     background: ${pryColor} !important; 
+    transition: .2s ease-in;
 
     &:hover{
         box-shadow: 4px 0px 4px 0px rgba(126, 166, 241, 0.25), -4px 0px 4px 0px rgba(126, 166, 241, 0.25), 0px -4px 4px 0px rgba(126, 166, 241, 0.25), 0px 4px 4px 0px rgba(126, 166, 241, 0.25);

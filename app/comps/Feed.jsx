@@ -21,11 +21,32 @@ const fetcher = (...args) => fetch(...args).then((res) => res.json())
 export const  Feed = ()=>{
 const router = useRouter()
 
+//states for filters
+
+
+let [selectedSubject, setSelectedSubject]= useState(null)
+let [selectedPostType, setSelectedPostType]= useState(null)
+
+
+const handleChangeSubject = (e) => {
+  setSelectedSubject(e.value)
+  if(e.value==='All'){
+    setSelectedSubject(null)
+  }
+};
+
+const handleType = (e) => {
+  setSelectedPostType(e.value)
+  if(e.value==='All'){
+    setSelectedPostType(null)
+  }
+};
+
   const optionPostType = [
-    'Post', 'Lecture'
+    'Post', 'Lecture', 'All'
   ];
   const optionSubject = [
-    'History', 'Computer Science','Economics'
+    'History', 'Computer Science','Economics','All'
   ];
 
  
@@ -47,6 +68,7 @@ const { data, error } = useSWR('/api/getPosts', fetcher)
         <h2>Filters </h2>
         <Dropdown options={optionPostType}  
         placeholder="Filter post by type" 
+        onChange={(val) => handleType(val)}
         className="dropdown" 
         controlClassName="dropdown-control" 
         placeholderClassName="dropdown-placeholder"
@@ -58,6 +80,7 @@ const { data, error } = useSWR('/api/getPosts', fetcher)
         <Dropdown options={optionSubject}  
         placeholder="Filter post by subject" 
         className="dropdown" 
+        onChange={(val) => handleChangeSubject(val)}
         controlClassName="dropdown-control" 
         placeholderClassName="dropdown-placeholder"
         menuClassName="dropdown-menu"
@@ -71,7 +94,10 @@ const { data, error } = useSWR('/api/getPosts', fetcher)
 
         <div className="feed-main">
           {data &&
-            data.map((post)=>(
+            data
+            .filter((post) => !selectedPostType || post.posttype === selectedPostType)
+            .filter((post) => !selectedSubject || post.subject === selectedSubject)
+            .map((post)=>(
 <Post
 key={post.id}
 id={post.id}
@@ -84,7 +110,6 @@ content={post.content}
 />
             ))
           }
-          
         </div>
     </StyledFeed>
   )

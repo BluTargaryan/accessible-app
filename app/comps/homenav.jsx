@@ -28,7 +28,8 @@ const scrollToTop = () =>{
 //func to logout
 
 const logOut = () =>{
-    router.push('/')
+    router.push('/logout')
+    
 }
 
     return(

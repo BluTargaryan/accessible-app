@@ -25,13 +25,17 @@ const toDelete = () =>{
     router.push(`/confirmation?id=${id}&title=${title}`)
 }
 
+const toReader = () =>{
+    router.push(`/reader?title=${encodeURIComponent(title)}&subject=${encodeURIComponent(subject)}&content=${encodeURIComponent(content)}`)
+}
+
     return(
         <StyledPost>
-            <div className="title-div">
+            <div className="title-div" onClick={()=>toReader()}>
 <span className="title">{title}</span>
 <span className="post-type">{posttype}</span>
             </div>
-            <div className="image">
+            <div className="image" onClick={()=>toReader()}>
             <img src={img} alt={alt}/>
             </div>
 <div className="post-tools">

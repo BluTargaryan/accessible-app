@@ -17,11 +17,11 @@ export default function Reader(){
     return(
         <StyledPage>
 <FormNav/>
-<div className="reader-main" >
+<article className="reader-main">
     <h1>{title}</h1>
     <h2>Subject: {subject}</h2>
     <div className="content" dangerouslySetInnerHTML={{ __html: content }}></div>
-</div>
+</article>
         </StyledPage>
     )
 }

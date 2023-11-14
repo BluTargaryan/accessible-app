@@ -112,29 +112,30 @@ const registerPost= (e)=>{
 
     return(
         <StyledForm id="form" onSubmit={registerPost}>
-  <div className="form-text">
-    <h2>New post</h2>
+  <section aria-label='form infotext' className="form-text">
+    <h3>New post</h3>
     <p dangerouslySetInnerHTML={{ __html: formText }}>
     </p>
-  </div>
+  </section>
 
 
-  <div className="form-input">
+  <section aria-label='title' className="form-input">
   <span className="flex">
   <ErrorIcon 
     isError={isErrorTitle}/>
     <label htmlFor="title"> Title</label>
     </span>
     <input type="text" id="title" value={inputTitle}  onChange={(e) => setInputTitle(e.target.value)}/>
-  </div>
+  </section>
 
-  <div className="form-input">
+  <section aria-label='subject' className="form-input">
   <span className="flex">
   <ErrorIcon 
     isError={isErrorSubject}/>
     <label htmlFor="subject"> Subject</label>
     </span>
     <Dropdown options={optionsSubject}  
+    tabIndex={0}
     id='subject'
     onChange={(val) => handleChange(val, setInputSubject)}
         placeholder="Select its related subject" 
@@ -146,27 +147,27 @@ const registerPost= (e)=>{
         arrowClosed={<MdOutlineKeyboardArrowDown className="icon"/>}
   arrowOpen={<MdOutlineKeyboardArrowUp className="icon"/>}
 />
-  </div>
+  </section>
 
-  <div className="form-input">
+  <section aria-label='image url' className="form-input">
   <span className="flex">
   <ErrorIcon 
     isError={isErrorURL}/>
     <label htmlFor="url">Image URL</label>
     </span>
     <input type="text" id="url" value={inputURL}  onChange={(e) => setInputURL(e.target.value)}/>
-  </div>
+  </section>
 
-  <div className="form-input">
+  <section aria-label='image alt text' className="form-input">
   <span className="flex">
   <ErrorIcon 
     isError={isErrorImgText}/>
     <label htmlFor="title"> Image alt text</label>
     </span>
     <input type="text" id="title" value={inputImgText}  onChange={(e) => setInputImgText(e.target.value)}/>
-  </div>
+  </section>
 
-  <div className="form-input">
+  <section aria-label='post-type' className="form-input">
   <span className="flex">
   <ErrorIcon 
     isError={isErrorType}/>
@@ -174,6 +175,7 @@ const registerPost= (e)=>{
     </span>
     <Dropdown options={optionsPost}  
     id='type'
+    tabindex="0"
     onChange={(val) => handleChange(val, setInputType)}
         placeholder="Select post type" 
         className="dropdown" 
@@ -184,9 +186,9 @@ const registerPost= (e)=>{
         arrowClosed={<MdOutlineKeyboardArrowDown className="icon"/>}
   arrowOpen={<MdOutlineKeyboardArrowUp className="icon"/>}
 />
-  </div>
+  </section>
 
-  <div className="form-input">
+  <section aria-label='content' className="form-input">
   <span className="flex">
   <ErrorIcon 
     isError={isErrorContent}/>
@@ -199,7 +201,7 @@ value={inputContent}
 className='quill'
 id='content'/>
     
-  </div>
+  </section>
 
   
 
@@ -229,7 +231,7 @@ width: 80%;
 display: flex;
 flex-direction: column;
 gap: 31px;
-h2{
+h3{
 font-size: 31px;
 }
 p{
@@ -307,7 +309,7 @@ gap: 25px;
   width: 90%;
   gap: 15px;
 
-  h2{
+  h3{
     font-size: 20px;
   }
   p{
@@ -360,7 +362,7 @@ padding-left: 45px;
   .form-text{
     gap: 15px;
 
-    h2{
+    h3{
       font-size: 20px;
     }
     p{

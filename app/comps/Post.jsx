@@ -58,7 +58,7 @@ const toReader = () =>{
 }
 
 
-const StyledPost = styled(motion.div)`
+const StyledPost = styled(motion.article)`
     width: 30%;
     height: 285px;
 

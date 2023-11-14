@@ -22,11 +22,11 @@ export default function addUser() {
   return (
   <StyledUser>
 <FormNav/>
-<Holder>
-<div className="text">
+<Holder >
+<section aria-label="form introtext" className="text">
 <h1>Add a new user to <span className="logo">SmartStudy</span></h1>
 <h2>Put in their details that they would use to login</h2>
-</div>
+</section>
 
 <UserForm/>
 
@@ -35,7 +35,7 @@ export default function addUser() {
   )
 }
 
-const StyledUser = styled(motion.main)`
+const StyledUser = styled(motion.div)`
 width: 100%;
 height: auto;
 padding: 20px 0;
@@ -49,7 +49,7 @@ flex-direction: column;
 
 
 
-const Holder = styled(motion.div)`
+const Holder = styled(motion.main)`
 width: 100%;
 height: auto;
 display: flex;

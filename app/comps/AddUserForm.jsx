@@ -98,41 +98,41 @@ const [isErrorType, setIsErrorType] = useState(false);
 
     return(
         <StyledForm id="form" onSubmit={registerFunc}>
-  <div className="form-text">
-    <h2>Register new user</h2>
+  <section aria-label='form-introtext' className="form-text">
+    <h3>Register new user</h3>
     <p dangerouslySetInnerHTML={{ __html: formText }}>
     </p>
-  </div>
+  </section>
 
 
-  <div className="form-input">
+  <section aria-label='username' className="form-input">
   <span className="flex">
   <ErrorIcon 
     isError={isErrorName}/>
     <label htmlFor="username"> Username</label>
     </span>
     <input type="text" id="username" value={inputName}  onChange={(e) => setInputName(e.target.value)}/>
-  </div>
+  </section>
 
-  <div className="form-input">
+  <section aria-label='passcode' className="form-input">
   <span className="flex">
   <ErrorIcon 
     isError={isErrorPasscode}/>
     <label htmlFor="passcode"> Passcode</label>
     </span>
     <input type="text" id="passcode" value={inputPassCode}  onChange={(e) => setInputPassCode(e.target.value)}/>
-  </div>
+  </section>
 
-  <div className="form-input">
+  <section aria-label='email' className="form-input">
   <span className="flex">
   <ErrorIcon 
     isError={isErrorEmail}/>
     <label htmlFor="email"> Email</label>
     </span>
     <input type="text" id="email" value={inputEmail}  onChange={(e) => setInputEmail(e.target.value)}/>
-  </div>
+  </section>
 
-  <div className="form-input">
+  <section aria-label='usertype' className="form-input">
   <span className="flex">
   <ErrorIcon 
     isError={isErrorType}/>
@@ -150,7 +150,7 @@ const [isErrorType, setIsErrorType] = useState(false);
         arrowClosed={<MdOutlineKeyboardArrowDown className="icon"/>}
   arrowOpen={<MdOutlineKeyboardArrowUp className="icon"/>}
 />
-  </div>
+  </section>
   
 
   <button id="button" style={{color:buttonColor}}>Submit</button>
@@ -177,7 +177,7 @@ width: 80%;
 display: flex;
 flex-direction: column;
 gap: 31px;
-h2{
+h3{
 font-size: 31px;
 }
 p{
@@ -246,7 +246,7 @@ gap: 25px;
   width: 90%;
   gap: 15px;
 
-  h2{
+  h3{
     font-size: 20px;
   }
   p{
@@ -290,7 +290,7 @@ padding-left: 45px;
   .form-text{
     gap: 15px;
 
-    h2{
+    h3{
       font-size: 20px;
     }
     p{

@@ -33,10 +33,10 @@ export default function Confirmation(){
         <StyledConfirm>
             <p>Are you sure you want to delete post with title:</p>
 <h1>{title}</h1>
-<div className="buttons">
+<section aria-label="buttons" className="buttons">
 <button onClick={()=>caseNo()}>No, do not delete</button>
 <button id="btn" onClick={()=>caseYes()}>Yes, delete it</button>
-</div>
+</section>
 
         </StyledConfirm>
     )

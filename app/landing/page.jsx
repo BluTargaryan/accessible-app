@@ -34,7 +34,7 @@ const searchParams = useSearchParams()
     const usertype = decodeURIComponent(searchParams.get('usertype'))
 
 //to control view of scroll elements
-const [isVisible, setIsVisible] = useState(true);
+const [isVisible, setIsVisible] = useState(false);
 
 useEffect(() => {
   const handleScroll = () => {
@@ -59,9 +59,9 @@ useEffect(() => {
   isVisible && <ToTop/>
 }
 
-<header>
-<div className="hero">
-<h1>Welcome to <span id="logo">SmartStudy</span>, the home of online learning! </h1>
+<header role="banner">
+<section aria-label="introText" className="hero">
+<p>Welcome to <span id="logo">SmartStudy</span>, the home of online learning! </p>
 <div className="buttons">
 <button className="btn-pry" onClick={()=>scrolltoFeed()}>Go to Feed</button>
 {
@@ -70,7 +70,7 @@ useEffect(() => {
 }
 
 </div>
-</div>
+</section>
 
 <Image
 src={heroImg} 
@@ -108,7 +108,7 @@ const StyledPage = styled(motion.div)`
             gap: 55px;
             padding-left: 40px;
 
-            h1{
+            p{
               font-size: 49px;
               font-weight: 400;
                 #logo{
@@ -143,7 +143,7 @@ const StyledPage = styled(motion.div)`
         align-items: center;
         justify-content: center;
 
-        h1{
+        p{
             width: 80%;
             font-size: 25px;
             text-align: center;
@@ -175,7 +175,7 @@ const StyledPage = styled(motion.div)`
       .hero{
         gap: 20px;
 
-        h1{
+        p{
             width: 100%;
             font-size: 25px;
         }
@@ -201,7 +201,7 @@ const StyledPage = styled(motion.div)`
       }
       .hero{
 
-        h1{
+        p{
             font-size: 39px;
         }
         .buttons{

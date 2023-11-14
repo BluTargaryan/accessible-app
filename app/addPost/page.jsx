@@ -22,11 +22,11 @@ export default function addPost() {
   return (
   <StyledPost>
 <FormNav/>
-<Holder>
-<div className="text">
+<Holder >
+<section aria-label="form-majortext" className="text">
 <h1>Add a new post to <span className="logo">SmartStudy</span></h1>
 <h2>Put in relevant details and create a new post!</h2>
-</div>
+</section>
 
 <PostForm/>
 
@@ -35,7 +35,7 @@ export default function addPost() {
   )
 }
 
-const StyledPost = styled(motion.main)`
+const StyledPost = styled(motion.section)`
 width: 100%;
 height: auto;
 padding: 20px 0;
@@ -49,7 +49,7 @@ flex-direction: column;
 
 
 
-const Holder = styled(motion.div)`
+const Holder = styled(motion.main)`
 width: 100%;
 height: auto;
 display: flex;

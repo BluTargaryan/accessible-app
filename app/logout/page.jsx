@@ -26,10 +26,10 @@ export default function Confirmation(){
         <StyledConfirm>
             <p>Are you sure you want to logout of</p>
 <h1>SmartStudy</h1>
-<div className="buttons">
+<section aria-label="buttons" className="buttons">
 <button onClick={()=>caseNo()}>No, go back</button>
 <button id="btn" onClick={()=>caseYes()}>Yes, logout</button>
-</div>
+</section>
 
         </StyledConfirm>
     )

@@ -90,21 +90,21 @@ const editPost= (e)=>{
 
     return(
         <StyledForm id="form" onSubmit={editPost}>
-  <div className="form-text">
+  <section aria-label='form-infoText' className="form-text">
     <h2>Edit post</h2>
     <p dangerouslySetInnerHTML={{ __html: formText }}>
     </p>
-  </div>
+  </section>
 
 
-  <div className="form-input">
+  <section aria-label='title' className="form-input">
   <span className="flex">
     <label htmlFor="title"> Title</label>
     </span>
     <input type="text" id="title" value={inputTitle}  onChange={(e) => setInputTitle(e.target.value)}/>
-  </div>
+  </section>
 
-  <div className="form-input">
+  <section aria-label='subject' className="form-input">
   <span className="flex">
 
     <label htmlFor="subject"> Subject</label>
@@ -122,25 +122,25 @@ const editPost= (e)=>{
         arrowClosed={<MdOutlineKeyboardArrowDown className="icon"/>}
   arrowOpen={<MdOutlineKeyboardArrowUp className="icon"/>}
 />
-  </div>
+  </section>
 
-  <div className="form-input">
+  <section aria-label='image' className="form-input">
   <span className="flex">
 
     <label htmlFor="url">Image URL</label>
     </span>
     <input type="text" id="url" value={inputURL}  onChange={(e) => setInputURL(e.target.value)}/>
-  </div>
+  </section>
 
-  <div className="form-input">
+  <section aria-label='image alt text' className="form-input">
   <span className="flex">
  
     <label htmlFor="title"> Image alt text</label>
     </span>
     <input type="text" id="title" value={inputAlt}  onChange={(e) => setInputAlt(e.target.value)}/>
-  </div>
+  </section>
 
-  <div className="form-input">
+  <section aria-label='post type' className="form-input">
   <span className="flex">
 
     <label htmlFor="type"> Post type</label>
@@ -158,9 +158,9 @@ const editPost= (e)=>{
         arrowClosed={<MdOutlineKeyboardArrowDown className="icon"/>}
   arrowOpen={<MdOutlineKeyboardArrowUp className="icon"/>}
 />
-  </div>
+  </section>
 
-  <div className="form-input">
+  <section aria-label='content' className="form-input">
   <span className="flex">
 
     <label htmlFor="content"> Content</label>
@@ -172,7 +172,7 @@ value={inputContent}
 className='quill'
 id='content'/>
     
-  </div>
+  </section>
 
   
 
@@ -202,7 +202,7 @@ width: 80%;
 display: flex;
 flex-direction: column;
 gap: 31px;
-h2{
+h3{
 font-size: 31px;
 }
 p{
@@ -280,7 +280,7 @@ gap: 25px;
   width: 90%;
   gap: 15px;
 
-  h2{
+  h3{
     font-size: 20px;
   }
   p{
@@ -333,7 +333,7 @@ padding-left: 45px;
   .form-text{
     gap: 15px;
 
-    h2{
+    h3{
       font-size: 20px;
     }
     p{

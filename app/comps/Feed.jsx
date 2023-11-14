@@ -63,7 +63,7 @@ const { data, error } = useSWR('/api/getPosts', fetcher)
   return(
     <StyledFeed id="feed">
         <h1>Feed</h1>
-        <div className="filters">
+        <section aria-label="filters-and-addPostButton" className="filters">
         <div className="filters-main">
         <h2>Filters </h2>
         <Dropdown options={optionPostType}  
@@ -95,9 +95,9 @@ const { data, error } = useSWR('/api/getPosts', fetcher)
 }
 
         
-        </div>
+        </section>
 
-        <div className="feed-main">
+        <section aria-label="post-feed" role="feed" className="feed-main">
           {data &&
             data
             .filter((post) => !selectedPostType || post.posttype === selectedPostType)
@@ -116,13 +116,13 @@ usertype={usertype}
 />
             ))
           }
-        </div>
+        </section>
     </StyledFeed>
   )
 }
 
 
-const StyledFeed = styled(motion.section)`
+const StyledFeed = styled(motion.main)`
 width: 100%;
 height: auto;
 padding: 0 32px;

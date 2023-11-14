@@ -53,7 +53,7 @@ useEffect(() => {
 }, []);
 
     return(
-        <Nav>
+        <Nav role="navigation">
             <span className="flex border" onClick={()=>scrollToTop()}>
             <span id="logo">SmartStudy</span>
             {

@@ -95,31 +95,31 @@ const successState = () =>{
 
     return(
         <StyledForm id="form" onSubmit={loginCheck}>
-  <div className="form-text">
+  <section aria-label='form-infoText' className="form-text">
     <h2>Log in</h2>
     <p dangerouslySetInnerHTML={{ __html: formText }}>
     </p>
-  </div>
+  </section>
 
 
-  <div className="form-input">
+  <section aria-label='username' className="form-input">
   <span className="flex">
     <ErrorIcon 
     isError={isError1}/>
     <label htmlFor="username"> Username</label>
     </span>
     <input type="text" id="username" value={inputName}  onChange={(e) => setInputName(e.target.value)}/>
-  </div>
+  </section>
 
 
-  <div className="form-input">
+  <section aria-label='passcode' className="form-input">
   <span className="flex">
   <ErrorIcon 
     isError={isError2}/>
     <label htmlFor="passcode"> Passcode</label>
     </span>
     <input type="password" id="passcode" value={inputPassCode}  onChange={(e) => setInputPassCode(e.target.value)}/>
-  </div>
+  </section>
   {
     data && <button id="button" style={{color:buttonColor}}>Submit</button>
   }

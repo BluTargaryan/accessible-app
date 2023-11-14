@@ -72,7 +72,7 @@ content={contentState}/>
   )
 }
 
-const StyledPost = styled(motion.main)`
+const StyledPost = styled(motion.div)`
 width: 100%;
 height: auto;
 padding: 20px 0;
@@ -86,7 +86,7 @@ flex-direction: column;
 
 
 
-const Holder = styled(motion.div)`
+const Holder = styled(motion.main)`
 width: 100%;
 height: auto;
 display: flex;

@@ -23,7 +23,7 @@ export default function Home() {
   return (
   <Login>
 <NavComp/>
-<Holder>
+<Holder role="main">
 <div className="text">
 <h1>Welcome back to <span className="logo">SmartStudy</span></h1>
 <h2>Please login using your account details</h2>
@@ -37,7 +37,7 @@ export default function Home() {
   )
 }
 
-const Login = styled(motion.main)`
+const Login = styled(motion.div)`
 width: 100%;
 height: 100vh;
 position: relative;
@@ -45,7 +45,7 @@ display: flex;
 flex-direction: column;
 `
 
-const Holder = styled(motion.div)`
+const Holder = styled(motion.main)`
 width: 100%;
 flex: 1;
 display: flex;

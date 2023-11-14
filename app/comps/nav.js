@@ -8,7 +8,7 @@ import { abril } from "../lib/fonts";
 export const NavComp = ()=>{
 
     return(
-        <Nav>
+        <Nav role="navigation">
        <span>SmartStudy</span>
         </Nav>
     )

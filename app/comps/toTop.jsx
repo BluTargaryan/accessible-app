@@ -16,7 +16,7 @@ export const ToTop = () =>{
 
     return(
         <StyledTop onClick={()=>scrollToTop()}>
-<MdOutlineArrowUpward className="icon"/>
+<MdOutlineArrowUpward className="icon" alt="Scroll to top of window"/>
         </StyledTop>
     )
 }

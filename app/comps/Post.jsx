@@ -18,11 +18,11 @@ export const Post = ({id, title, posttype, img, alt, subject, content, usertype}
 const toEdit = () =>{
    console.log(content)
     const encodedContent = encodeURIComponent(content);
-    router.push(`/edit?id=${id}&title=${title}&posttype=${posttype}&img=${img}&subject=${subject}&content=${encodedContent}&alt=${alt}`)
+    router.push(`/edit?id=${id}&title=${title}&posttype=${posttype}&img=${img}&subject=${subject}&content=${encodedContent}&alt=${alt}&usertype=${encodeURIComponent(usertype)}`)
 }
 
 const toDelete = () =>{
-    router.push(`/confirmation?id=${id}&title=${title}`)
+    router.push(`/confirmation?id=${id}&title=${title}&usertype=${encodeURIComponent(usertype)}`)
 }
 
 const toReader = () =>{

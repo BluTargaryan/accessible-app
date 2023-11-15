@@ -28,7 +28,7 @@ const scrollToTop = () =>{
 //func to logout
 
 const goBack = () =>{
-    router.push('/landing')
+    router.back()
 }
 
     return(

@@ -16,9 +16,16 @@ import { abril } from "../lib/fonts";
 //motion and styled
 import { motion } from "framer-motion";
 import styled from "styled-components";
+import { useSearchParams } from "next/navigation";
 
 
 export default function addUser() {
+
+  
+const searchParams = useSearchParams()
+const usertype = decodeURIComponent(searchParams.get('usertype'))
+
+
   return (
   <StyledUser>
 <FormNav/>
@@ -28,7 +35,8 @@ export default function addUser() {
 <h2>Put in their details that they would use to login</h2>
 </section>
 
-<UserForm/>
+<UserForm
+usertype={usertype}/>
 
 </Holder>
   </StyledUser>
@@ -43,11 +51,6 @@ position: relative;
 display: flex;
 flex-direction: column;
 `
-
-
-
-
-
 
 const Holder = styled(motion.main)`
 width: 100%;

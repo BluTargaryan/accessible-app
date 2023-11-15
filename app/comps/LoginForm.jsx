@@ -31,9 +31,7 @@ const [isButtonError, setIsButtonError] = useState(false);
 const [inputName, setInputName] = useState('')
 const [inputPassCode, setInputPassCode] = useState('')
 
-//sample login details
-const testName = 'donut'
-const testCode = '1234sdw'
+
 
 //button color
 const buttonColor = isButtonError?errorColor:pryColor

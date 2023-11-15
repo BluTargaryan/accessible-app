@@ -19,7 +19,7 @@ import { bgColor , pryColor, errorColor, txtColor} from "../lib/colors";
 import {MdOutlineKeyboardArrowDown,MdOutlineKeyboardArrowUp} from "react-icons/md";
 import { ErrorIcon } from "./ErrorIcon";
 
-export const UserForm = ()=>{
+export const UserForm = ({usertype})=>{
 
   //routing
   const router = useRouter()
@@ -58,7 +58,7 @@ e.preventDefault()
 
 if (inputName !== '' && inputPassCode !== ''&& inputEmail !== ''&& selected !== '') {
 uponConfirmation()
-router.push(`/addUser/${inputName}`)
+router.push(`/addUser/${inputName}?usertype=${usertype}`)
 }else{
   if(inputName === '') toggleError(setIsErrorName, 'You left the <b>name</b> section empty. Please fill it to successfully register a new user.')
   if(inputPassCode === '') toggleError(setIsErrorPasscode, 'You left the <b>passcode</b> section empty. Please fill it to successfully register a new user.')

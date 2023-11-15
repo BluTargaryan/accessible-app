@@ -52,7 +52,7 @@ const handleType = (e) => {
  
  //functo go to add post page
 const toAddPost = ()=>{
-  router.push('/addPost')
+  router.push(`/addPost?usertype=${encodeURIComponent(usertype)}`)
 }
 
 const { data, error } = useSWR('/api/getPosts', fetcher)

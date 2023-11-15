@@ -17,8 +17,13 @@ import { abril } from "../lib/fonts";
 import { motion } from "framer-motion";
 import styled from "styled-components";
 
+import { useSearchParams } from "next/navigation";
+
 
 export default function addPost() {
+
+  const searchParams = useSearchParams()
+    const usertype = decodeURIComponent(searchParams.get('usertype'))
   return (
   <StyledPost>
 <FormNav/>
@@ -28,7 +33,8 @@ export default function addPost() {
 <h2>Put in relevant details and create a new post!</h2>
 </section>
 
-<PostForm/>
+<PostForm
+usertype={usertype}/>
 
 </Holder>
   </StyledPost>

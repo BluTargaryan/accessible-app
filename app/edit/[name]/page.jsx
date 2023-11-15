@@ -6,17 +6,19 @@ import styled from "styled-components";
 import { bgColor, successColor } from "@/app/lib/colors";
 import { useRouter } from "next/navigation";
 
-import { useParams } from "next/navigation";
+import { useParams, useSearchParams } from "next/navigation";
 
 export default function Success(){
     const params = useParams();
     const name = decodeURIComponent(params.name)
-    
+   
+    const searchParams = useSearchParams()
+    const usertype = decodeURIComponent(searchParams.get('usertype'))
 
     const router = useRouter()
 
     const routeToHome = ()=>{
-router.push('/landing')
+router.push(`/landing?usertype=${usertype}`)
     }
     return(
         <StyledSuccess>

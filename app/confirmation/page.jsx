@@ -11,6 +11,7 @@ export default function Confirmation(){
     const searchParams = useSearchParams()
     const id = searchParams.get('id')
     const title = searchParams.get('title')
+    const usertype = decodeURIComponent(searchParams.get('usertype'))
 
     const router = useRouter();
 
@@ -27,7 +28,7 @@ export default function Confirmation(){
           });
 
 
-          router.push(`/success?title=${encodeURIComponent(title)}`)
+          router.push(`/success?title=${encodeURIComponent(title)}&usertype=${encodeURIComponent(usertype)}`)
     }
     return(
         <StyledConfirm>

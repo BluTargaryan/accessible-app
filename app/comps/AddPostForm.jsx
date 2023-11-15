@@ -24,7 +24,7 @@ import {MdOutlineKeyboardArrowDown,MdOutlineKeyboardArrowUp} from "react-icons/m
 import { ErrorIcon } from "./ErrorIcon";
 
 
-export const PostForm = () =>{
+export const PostForm = ({usertype}) =>{
     const [formText, setFormText] = useState("Type in the <b>title, subject, content, image</b> and select the <b>type</b> of the new post. You can add images as well to the <b>content</b> section, but make sure it has a text label below it!");
     
 
@@ -96,7 +96,7 @@ const registerPost= (e)=>{
   if (inputTitle !== '' && inputSubject !== ''&& inputType !== ''&& inputContent !== ''&& inputImgText !== '') {
   uponConfirmation()
   const encodedTitle = encodeURIComponent(inputTitle)
-  router.push(`/addPost/${encodedTitle}`)
+  router.push(`/addPost/${encodedTitle}?usertype=${usertype}`)
   }else{
     if(inputTitle === '') toggleError(setIsErrorTitle, 'You left the <b>title</b> section empty. Please fill it to successfully add a new post.')
     if(inputSubject === '') toggleError(setIsErrorSubject, 'You did not select a <b>subject</b>. Please select one to successfully add a new post.')

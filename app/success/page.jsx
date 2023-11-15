@@ -9,6 +9,8 @@ import { useRouter, useSearchParams } from "next/navigation";
 export default function Success(){
     const searchParams = useSearchParams()
     const title = decodeURIComponent(searchParams.get('title'))
+    const usertype = decodeURIComponent(searchParams.get('usertype'))
+    
 
     const router = useRouter();
 
@@ -18,7 +20,7 @@ export default function Success(){
         <StyledSuccess>
 <h1>{title}</h1>
 <p>has been deleted successfully.</p>
-<button onClick={()=>router.push('/landing')}>Continue</button>
+<button onClick={()=>router.push(`/landing?usertype=${encodeURIComponent(usertype)}`)}>Continue</button>
         </StyledSuccess>
     )
 }

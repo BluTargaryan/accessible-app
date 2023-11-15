@@ -25,7 +25,7 @@ const scrolltoFeed = () =>{
 }
 //func to add user
 const addUser = ()=>{
-  router.push('/addUser')
+  router.push(`/addUser?usertype=${encodeURIComponent(usertype)}`)
 }
 
 
@@ -62,14 +62,14 @@ useEffect(() => {
 <header role="banner">
 <section aria-label="introText" className="hero">
 <p>Welcome to <span id="logo">SmartStudy</span>, the home of online learning! </p>
-<div className="buttons">
+<section aria-label="buttons" className="buttons">
 <button className="btn-pry" onClick={()=>scrolltoFeed()}>Go to Feed</button>
 {
   (usertype==='Staff') &&
   <button className="btn-accent" onClick={()=>addUser()}>Add User</button>
 }
 
-</div>
+</section>
 </section>
 
 <Image

@@ -24,7 +24,7 @@ import {MdOutlineKeyboardArrowDown,MdOutlineKeyboardArrowUp} from "react-icons/m
 import { ErrorIcon } from "./ErrorIcon";
 
 
-export const EditForm = ({id, title, posttype, img,alt, subject, content}) =>{
+export const EditForm = ({id, title, posttype, img,alt, subject, content, usertype}) =>{
     const [formText, setFormText] = useState("Edit the <b>title, subject, content, image</b> and select the <b>type</b> of the post.");
     
 
@@ -84,7 +84,7 @@ const editPost= (e)=>{
 
   uponConfirmation()
   const encodedTitle = encodeURIComponent(inputTitle);
-  router.push(`/edit/${encodedTitle}`)
+  router.push(`/edit/${encodedTitle}?usertype=${usertype}`)
   }
 
 

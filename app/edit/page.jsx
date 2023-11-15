@@ -35,6 +35,7 @@ export default function editPost() {
     const alt = searchParams.get('alt')
     const subject = searchParams.get('subject')
     const content = decodeURIComponent(searchParams.get('content'));
+    const usertype = decodeURIComponent(searchParams.get('usertype'));
 
 
 
@@ -65,7 +66,8 @@ posttype={posttypeState}
 img={imgState}
 alt={altState}
 subject={subjectState}
-content={contentState}/>
+content={contentState}
+usertype={usertype}/>
 
 </Holder>
   </StyledPost>

@@ -29,9 +29,6 @@ export default function Home() {
 <h2>Please login using your account details</h2>
 </div>
 <LoginForm/>
-
-
-
 </Holder>
   </Login>
   )

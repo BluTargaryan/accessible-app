@@ -135,9 +135,9 @@ const editPost= (e)=>{
   <section aria-label='image alt text' className="form-input">
   <span className="flex">
  
-    <label htmlFor="title"> Image alt text</label>
+    <label htmlFor="alttext"> Image alt text</label>
     </span>
-    <input type="text" id="title" value={inputAlt}  onChange={(e) => setInputAlt(e.target.value)}/>
+    <input type="text" id="alttext" value={inputAlt}  onChange={(e) => setInputAlt(e.target.value)}/>
   </section>
 
   <section aria-label='post type' className="form-input">

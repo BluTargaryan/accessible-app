@@ -162,9 +162,9 @@ const registerPost= (e)=>{
   <span className="flex">
   <ErrorIcon 
     isError={isErrorImgText}/>
-    <label htmlFor="title"> Image alt text</label>
+    <label htmlFor="alttext"> Image alt text</label>
     </span>
-    <input type="text" id="title" value={inputImgText}  onChange={(e) => setInputImgText(e.target.value)}/>
+    <input type="text" id="alttext" value={inputImgText}  onChange={(e) => setInputImgText(e.target.value)}/>
   </section>
 
   <section aria-label='post-type' className="form-input">

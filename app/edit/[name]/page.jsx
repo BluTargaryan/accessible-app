@@ -29,7 +29,7 @@ router.push(`/landing?usertype=${usertype}`)
     )
 }
 
-const StyledSuccess = styled(motion.div)`
+const StyledSuccess = styled(motion.main)`
     width: 100vw;
     height: 100vh;
     background: ${successColor};

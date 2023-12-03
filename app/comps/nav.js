@@ -14,7 +14,7 @@ export const NavComp = ()=>{
     )
 }
 
-const Nav = styled(motion.nav)`
+const Nav = styled(motion.div)`
 width: 100%;
 height: 86px;
 font-family:${abril.style.fontFamily};

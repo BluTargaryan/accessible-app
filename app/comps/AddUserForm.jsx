@@ -71,7 +71,7 @@ router.push(`/addUser/${inputName}?usertype=${usertype}`)
 
 //if allowed to add user
 const uponConfirmation = ()=>{
-  fetch('http://localhost:3000/api/createUser', {
+  fetch(`${process.env}/api/createUser`, {
     method: 'POST',
     body: JSON.stringify({
        username: inputName, 
@@ -139,7 +139,7 @@ const [isErrorType, setIsErrorType] = useState(false);
     <label htmlFor="type"> User type</label>
     </span>
     <Dropdown options={options}  
-    id='type'
+    id="type"
     onChange={(val) => handleChange(val)}
         placeholder="Select user type" 
         className="dropdown" 

@@ -68,7 +68,7 @@ const addDesc = (value) => {
 
 //if allowed to add post
 const uponConfirmation = ()=>{
-  fetch('http://localhost:3000/api/createPost', {
+  fetch(`${process.env}/api/createPost`, {
     method: 'POST',
     body: JSON.stringify({
        title:inputTitle,

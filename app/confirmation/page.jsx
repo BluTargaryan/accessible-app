@@ -20,7 +20,7 @@ export default function Confirmation(){
     }
 
     const caseYes = () =>{
-        fetch(`http://localhost:3000/api/deletePost`, {
+        fetch(`${process.env}/api/deletePost`, {
             method: 'DELETE',
             body: JSON.stringify({
               id:id,
@@ -43,7 +43,7 @@ export default function Confirmation(){
     )
 }
 
-const StyledConfirm = styled(motion.div)`
+const StyledConfirm = styled(motion.main)`
     width: 100vw;
     height: 100vh;
     background: ${errorColor};

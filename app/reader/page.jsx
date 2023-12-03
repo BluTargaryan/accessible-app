@@ -17,11 +17,11 @@ export default function Reader(){
     return(
         <StyledPage>
 <FormNav/>
-<article className="reader-main">
+<main className="reader-main">
     <h1>{title}</h1>
     <h2>Subject: {subject}</h2>
     <div className="content" dangerouslySetInnerHTML={{ __html: content }}></div>
-</article>
+</main>
         </StyledPage>
     )
 }
@@ -50,7 +50,6 @@ h2{
 .content{
     width: 100%;
     font-size: 20px;
-    text-align: justify;
     
     img{
         width: 60%;

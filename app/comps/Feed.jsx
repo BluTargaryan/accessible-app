@@ -67,6 +67,7 @@ const { data, error } = useSWR('/api/getPosts', fetcher)
         <div className="filters-main">
         <h2>Filters </h2>
         <Dropdown options={optionPostType}  
+        tabIndex = {0} 
         placeholder="Filter post by type" 
         onChange={(val) => handleType(val)}
         className="dropdown" 
@@ -77,7 +78,8 @@ const { data, error } = useSWR('/api/getPosts', fetcher)
         arrowClosed={<MdOutlineKeyboardArrowDown className="icon"/>}
   arrowOpen={<MdOutlineKeyboardArrowUp className="icon"/>}
 />
-        <Dropdown options={optionSubject}  
+        <Dropdown options={optionSubject} 
+        tabIndex = {0} 
         placeholder="Filter post by subject" 
         className="dropdown" 
         onChange={(val) => handleChangeSubject(val)}

@@ -55,11 +55,11 @@ const loginCheck= (e)=>{
       break;
   } 
   else {
-  if(inputName !== user.username){
+  if(inputName !== user.username && inputPassCode === user.passcode){
   toggleError( setIsError1, "The <b>username</b> doesn't match the value in our records. please check and re-enter the username")
   setInputName('')
   }
-  if(inputPassCode !== user.passcode){
+  if(inputPassCode !== user.passcode && inputName === user.username){
   toggleError( setIsError2, "The <b>passcode</b> doesn't match the value in our records. please check and re-enter the passcode")
     setInputPassCode('')
   }

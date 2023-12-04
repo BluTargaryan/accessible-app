@@ -46,23 +46,37 @@ const loginCheck= (e)=>{
 
     if (inputName === user.username && inputPassCode === user.passcode) {
       console.log("Login successful!");
-      if(isError1===false || isError2===false){
+      setIsError1(false)
+      setIsError2(false)
+
         successState()
         setInputName('')
         setInputPassCode('')
         router.push(`/landing?usertype=${encodeURIComponent(user.usertype)}`)
-      }
+
       break;
   } 
   else {
   if(inputName !== user.username && inputPassCode === user.passcode){
-  toggleError( setIsError1, "The <b>username</b> doesn't match the value in our records. please check and re-enter the username")
-  setInputName('')
+  toggleError( "The <b>username</b> doesn't match the value in our records. please check and re-enter the username")
+  setIsError1(true)
+  setIsError2(false)
+  break
   }
-  if(inputPassCode !== user.passcode && inputName === user.username){
-  toggleError( setIsError2, "The <b>passcode</b> doesn't match the value in our records. please check and re-enter the passcode")
-    setInputPassCode('')
+  else if(inputPassCode !== user.passcode && inputName === user.username){
+  toggleError( "The <b>passcode</b> doesn't match the value in our records. please check and re-enter the passcode")
+  setIsError2(true)
+  setIsError1(false)  
+    break
   }
+  else{
+    toggleError( "The <b>passcode</b> and <b>username</b> doesn't match the value in our records. please check and re-enter the passcode")
+    toggleError( "The <b>passcode</b> and <b>username</b> doesn't match the value in our records. please check and re-enter the passcode")
+    setIsError2(true)
+  setIsError1(true)   
+    }
+
+
   }
   }
 
@@ -71,9 +85,9 @@ const loginCheck= (e)=>{
 }
 
 //func to switch errorstate
-const toggleError = ( setError, fText)=>{
+const toggleError = ( fText)=>{
   
-  setError(true)
+ 
   document.getElementById('form').classList.add('bgError')
 setIsButtonError(true)
   setFormText(fText)

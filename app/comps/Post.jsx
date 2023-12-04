@@ -42,11 +42,11 @@ const toReader = () =>{
             {
   (usertype==='Staff') &&
 <div className="post-tools">
-    <span className="edit" onClick={()=>toEdit()}>
+    <span tabIndex={0} className="edit" onClick={()=>toEdit()}>
     <MdEdit/>
     <p>Edit</p>
     </span>
-    <span className="delete" onClick={()=>toDelete()}>
+    <span tabIndex={0} className="delete" onClick={()=>toDelete()}>
     <MdDelete/>
     <p>Delete</p>
     </span>
